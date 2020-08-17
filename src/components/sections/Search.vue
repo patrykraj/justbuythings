@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import SectionHeader from "./SectionHeader.vue";
-import Form from "./Form.vue";
+import SectionHeader from "../SectionHeader.vue";
+import Form from "../Form.vue";
 
 export default {
   name: "Search",

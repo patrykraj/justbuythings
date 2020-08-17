@@ -3,18 +3,21 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="Welcome to Price Comparison App" />
     <Search />
+    <Products />
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-import Search from "./components/Search.vue";
+import Search from "./components/sections/Search.vue";
+import Products from "./components/sections/Products.vue";
 
 export default {
   name: "App",
   components: {
     HelloWorld,
     Search,
+    Products,
   },
 };
 </script>
