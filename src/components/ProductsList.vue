@@ -7,30 +7,13 @@
 <script>
 import Product from "./Product.vue";
 
-import axios from "axios";
-
 export default {
   name: "ProductsList",
   props: {
-    msg: String,
+    products: Array,
   },
   components: {
     Product,
-  },
-  data: function() {
-    return {
-      products: [],
-    };
-  },
-  created: function() {
-    axios
-      .get(
-        "https://my-json-server.typicode.com/patrykraj/product-comparison/products"
-      )
-      .then((res) => {
-        console.log(res.data);
-        this.products = res.data;
-      });
   },
 };
 </script>
