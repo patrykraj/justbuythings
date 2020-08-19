@@ -18,11 +18,12 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   name: "Search",
   props: {
     productsQuantity: Number,
-    setVisibleProperties: Function,
   },
   data() {
     return {
@@ -32,22 +33,23 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(["setVisibleProperties"]),
     handleSetPage(val) {
       if (val === "-" && this.selectedPage) {
-        this.setVisibleProperties(
-          (this.selectedPage - 1) * this.itemsPerPage,
-          this.selectedPage * this.itemsPerPage
-        );
+        this.setVisibleProperties({
+          from: (this.selectedPage - 1) * this.itemsPerPage,
+          to: this.selectedPage * this.itemsPerPage,
+        });
         this.selectedPage = this.selectedPage - 1;
       } else if (
         val === "+" &&
         this.selectedPage <
           Math.floor(this.productsQuantity / this.itemsPerPage)
       ) {
-        this.setVisibleProperties(
-          (this.selectedPage + 1) * this.itemsPerPage,
-          (this.selectedPage + 2) * this.itemsPerPage
-        );
+        this.setVisibleProperties({
+          from: (this.selectedPage + 1) * this.itemsPerPage,
+          to: (this.selectedPage + 2) * this.itemsPerPage,
+        });
         this.selectedPage = this.selectedPage + 1;
       }
     },
@@ -64,10 +66,10 @@ export default {
         txt: i + 1,
         click: () => {
           this.selectedPage = i;
-          this.setVisibleProperties(
-            i * this.itemsPerPage,
-            (i + 1) * this.itemsPerPage
-          );
+          this.setVisibleProperties({
+            from: i * this.itemsPerPage,
+            to: (i + 1) * this.itemsPerPage,
+          });
         },
       };
 

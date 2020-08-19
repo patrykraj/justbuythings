@@ -22,6 +22,9 @@ export default {
     Products,
     Compare,
   },
+  created: function() {
+    this.$store.dispatch("getProducts");
+  },
 };
 </script>
 
