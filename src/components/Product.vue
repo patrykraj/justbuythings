@@ -1,5 +1,5 @@
 <template>
-  <li class="product-listed">
+  <li class="product-listed" :class="product.special ? 'special' : null">
     <div class="img-container">
       <div class="img"></div>
     </div>
@@ -9,7 +9,7 @@
       <p>Brand: {{ product.brand }}</p>
     </div>
     <div class="price-container">
-      <Button txt="Add to compare" />
+      <Button txt="Add to compare" :special="product.special" />
       <h4>${{ product.price.toFixed(2) }} net</h4>
       <p>${{ (product.price * 0.23 + product.price).toFixed(2) }} gross</p>
     </div>
@@ -31,6 +31,10 @@ export default {
 </script>
 
 <style>
+li.special {
+  background: rgb(0, 0, 0, 0.1);
+}
+
 li.product-listed {
   display: flex;
   justify-content: space-between;
@@ -49,6 +53,7 @@ div.img {
   border: 2px solid #2c3e50;
   position: relative;
   overflow: hidden;
+  background: white;
 }
 
 div.img::before,

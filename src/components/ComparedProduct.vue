@@ -1,6 +1,6 @@
 <template>
-  <li>
-    <Button txt="Delete" />
+  <li :class="product.special ? 'special' : null">
+    <Button txt="Delete" :special="product.special" />
     <div class="img-container">
       <div class="img"></div>
     </div>
@@ -65,5 +65,6 @@ h4 {
 p.description {
   text-align: left;
   font-size: 13px;
+  padding: 0 5px;
 }
 </style>
