@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li class="product-listed">
     <div class="img-container">
       <div class="img"></div>
     </div>
@@ -30,8 +30,8 @@ export default {
 };
 </script>
 
-<style scoped>
-li {
+<style>
+li.product-listed {
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid #2c3e50;
@@ -39,7 +39,7 @@ li {
   text-align: left;
 }
 
-li:last-child {
+li.product-listed:last-child {
   border-bottom: none;
 }
 

@@ -4,6 +4,7 @@
     <HelloWorld msg="Welcome to Price Comparison App" />
     <Search />
     <Products />
+    <Compare />
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import Search from "./components/sections/Search.vue";
 import Products from "./components/sections/Products.vue";
+import Compare from "./components/sections/Compare.vue";
 
 export default {
   name: "App",
@@ -18,6 +20,7 @@ export default {
     HelloWorld,
     Search,
     Products,
+    Compare,
   },
 };
 </script>

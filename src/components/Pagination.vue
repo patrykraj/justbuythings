@@ -3,7 +3,12 @@
     <button @click="handleSetPage('-')">
       left
     </button>
-    <button v-for="btn in this.buttons" :key="btn.id" @click="btn.click">
+    <button
+      v-for="btn in this.buttons"
+      :key="btn.id"
+      :class="btn.id === selectedPage ? 'active' : null"
+      @click="btn.click"
+    >
       {{ btn.txt }}
     </button>
     <button @click="handleSetPage('+')">
@@ -88,16 +93,25 @@ button {
   cursor: pointer;
 }
 
-button:nth-child(even) {
-  border-left: none;
+button.active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+button:focus {
+  outline: none;
+}
+
+button + button {
   border-right: none;
 }
 
 button:first-child {
+  border-right: none;
   border-radius: 5px 0 0 5px;
 }
 
 button:last-child {
+  border-right: 2px solid #2c3e50;
   border-radius: 0 5px 5px 0;
 }
 </style>
