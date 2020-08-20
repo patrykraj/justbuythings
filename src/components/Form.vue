@@ -7,7 +7,11 @@
     <div class="row">
       <select
         @change="
-          handleFilterProducts({ key: 'brand', val: $event.target.value })
+          handleFilterProducts({
+            key: 'brand',
+            val: $event.target.value,
+            type: 'SELECT',
+          })
         "
       >
         <option selected disabled>Select</option>
@@ -24,7 +28,11 @@
           min="0"
           max="1000000"
           @input="
-            handleFilterPriceProducts({ key: 'from', val: $event.target.value })
+            handleFilterProducts({
+              key: 'from',
+              val: $event.target.value,
+              type: 'INPUT',
+            })
           "
         />
         <input
@@ -34,7 +42,11 @@
           min="0"
           max="1000000"
           @input="
-            handleFilterPriceProducts({ key: 'to', val: $event.target.value })
+            handleFilterProducts({
+              key: 'to',
+              val: $event.target.value,
+              type: 'INPUT',
+            })
           "
         />
       </div>
@@ -43,7 +55,18 @@
       <div class="select-colors">
         <span>Select color:</span>
         <label v-for="color in colors" :key="color">
-          <input type="checkbox" value="color" /> {{ color }}
+          <input
+            type="checkbox"
+            :value="color"
+            @change="
+              handleFilterProducts({
+                key: 'colors',
+                val: $event.target.value,
+                type: 'CHECKBOX',
+              })
+            "
+          />
+          {{ color }}
         </label>
       </div>
     </div>
@@ -83,9 +106,9 @@ export default {
     });
   },
   methods: {
-    ...mapMutations(["handleFilterProducts", "handleFilterPriceProducts"]),
-    handlePrice(val, key) {
-      console.log(key, val);
+    ...mapMutations(["handleFilterProducts"]),
+    tak(xd) {
+      console.log(xd);
     },
   },
 };
