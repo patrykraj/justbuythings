@@ -97,10 +97,9 @@ const mutations = {
               .toLowerCase()
               .includes(this.state.filterProperties.name.toLowerCase()))
         )
-          newList.push(product);
+          productIsValid = true;
         else {
           productIsValid = false;
-          newList.filter((item) => item.id !== product.id);
         }
       }
 
@@ -108,65 +107,18 @@ const mutations = {
         if (
           productIsValid &&
           product.brand === this.state.filterProperties.brand
-        )
-          newList.includes(product) ? null : newList.push(product);
-        else {
+        ) {
+          productIsValid = true;
+        } else {
           productIsValid = false;
-          newList.filter((item) => item.id !== product.id);
         }
       }
+
+      if (productIsValid) newList.push(product);
     });
 
-    // this.state.products.map((product) => {
-    //   let validProduct = true;
-
-    //   if (
-    //     this.state.filterProperties.name &&
-    //     this.state.filterProperties.name.trim().length >= 3 &&
-    //     (product.name
-    //       .toLowerCase()
-    //       .includes(this.state.filterProperties.name.toLowerCase()) ||
-    //       product.model
-    //         .toLowerCase()
-    //         .includes(this.state.filterProperties.name.toLowerCase()))
-    //   )
-    //     validProduct = true;
-    //   else return;
-
-    //   if (
-    //     this.state.filterProperties.brand &&
-    //     product.brand === this.state.filterProperties.brand
-    //   )
-    //     validProduct = true;
-    //   else return;
-
-    //   if (validProduct) newList.push(product);
-    // });
-
     this.state.filteredProducts = newList;
-    // console.log(newList);
   },
-
-  // handleFilterPriceProducts({ filterProperties }, { key, val }) {
-  //   console.log("handle", filterProperties);
-
-  //   this.state.filterProperties = {
-  //     ...this.state.filterProperties,
-  //     price: {
-  //       ...this.state.filterProperties.price,
-  //       [key]: Number(val),
-  //     },
-  //   };
-
-  //   for (let key in this.state.filterProperties) {
-  //     console.log(key, this.state.filterProperties[key]);
-  //   }
-  // },
-
-  // deleteBook({ books }, id) {
-  //   const newBooks = books.filter((book) => book.id !== id);
-  //   this.state.books = newBooks;
-  // },
 };
 
 export default mutations;
