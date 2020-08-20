@@ -1,5 +1,12 @@
 <template>
-  <ul>
+  <ul v-if="filteredProducts.length">
+    <Product
+      v-for="product in filteredProducts"
+      :key="product.id"
+      :product="product"
+    />
+  </ul>
+  <ul v-else>
     <Product v-for="product in products" :key="product.id" :product="product" />
   </ul>
 </template>
@@ -11,6 +18,7 @@ export default {
   name: "ProductsList",
   props: {
     products: Array,
+    filteredProducts: Array,
   },
   components: {
     Product,

@@ -1,8 +1,14 @@
 <template>
   <section v-if="products.length" class="products">
     <SectionHeader title="Products" sorting />
-    <ProductsList :products="this.visibleProducts" />
-    <Pagination :productsQuantity="this.products.length" />
+    <ProductsList
+      :products="this.visibleProducts"
+      :filteredProducts="this.filteredProducts"
+    />
+    <Pagination
+      :productsQuantity="this.products.length"
+      :filteredQuantity="this.filteredProducts.length"
+    />
   </section>
   <h2 v-else>Loading...</h2>
 </template>
@@ -26,7 +32,7 @@ export default {
     return {};
   },
   methods: {},
-  computed: mapState(["products", "visibleProducts"]),
+  computed: mapState(["products", "visibleProducts", "filteredProducts"]),
 };
 </script>
 

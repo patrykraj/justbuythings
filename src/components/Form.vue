@@ -5,16 +5,38 @@
       <Button txt="Search" />
     </div>
     <div class="row">
-      <select>
+      <select
+        @change="
+          handleFilterProducts({ key: 'brand', val: $event.target.value })
+        "
+      >
         <option selected disabled>Select</option>
-        <option v-for="brand in brands" :key="brand" value="brand">{{
+        <option v-for="brand in brands" :key="brand" :value="brand">{{
           brand
         }}</option>
       </select>
       <div class="price-select">
         <span>Price range</span>
-        <input class="price-select-input" type="text" placeholder="from" />
-        <input class="price-select-input" type="text" placeholder="to" />
+        <input
+          class="price-select-input"
+          type="number"
+          placeholder="from"
+          min="0"
+          max="1000000"
+          @input="
+            handleFilterPriceProducts({ key: 'from', val: $event.target.value })
+          "
+        />
+        <input
+          class="price-select-input"
+          type="number"
+          placeholder="to"
+          min="0"
+          max="1000000"
+          @input="
+            handleFilterPriceProducts({ key: 'to', val: $event.target.value })
+          "
+        />
       </div>
     </div>
     <div class="row">
@@ -31,7 +53,7 @@
 
 <script>
 import Button from "./Button.vue";
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Search",
@@ -59,6 +81,12 @@ export default {
         }
       });
     });
+  },
+  methods: {
+    ...mapMutations(["handleFilterProducts", "handleFilterPriceProducts"]),
+    handlePrice(val, key) {
+      console.log(key, val);
+    },
   },
 };
 </script>
