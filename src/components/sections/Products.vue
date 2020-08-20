@@ -4,6 +4,7 @@
     <ProductsList
       :products="this.visibleProducts"
       :filteredProducts="this.filteredProducts"
+      :filterActive="this.filterActive"
     />
     <Pagination
       :productsQuantity="this.products.length"
@@ -32,7 +33,12 @@ export default {
     return {};
   },
   methods: {},
-  computed: mapState(["products", "visibleProducts", "filteredProducts"]),
+  computed: mapState([
+    "products",
+    "visibleProducts",
+    "filteredProducts",
+    "filterActive",
+  ]),
 };
 </script>
 

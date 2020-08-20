@@ -82,11 +82,73 @@ const mutations = {
       }
     }
 
-    console.log(this.state.filterActive);
+    const newList = [];
+
+    this.state.products.map((product) => {
+      let productIsValid = true;
+      if (this.state.filterProperties.name) {
+        if (
+          productIsValid &&
+          this.state.filterProperties.name.trim().length >= 3 &&
+          (product.name
+            .toLowerCase()
+            .includes(this.state.filterProperties.name.toLowerCase()) ||
+            product.model
+              .toLowerCase()
+              .includes(this.state.filterProperties.name.toLowerCase()))
+        )
+          newList.push(product);
+        else {
+          productIsValid = false;
+          newList.filter((item) => item.id !== product.id);
+        }
+      }
+
+      if (this.state.filterProperties.brand) {
+        if (
+          productIsValid &&
+          product.brand === this.state.filterProperties.brand
+        )
+          newList.includes(product) ? null : newList.push(product);
+        else {
+          productIsValid = false;
+          newList.filter((item) => item.id !== product.id);
+        }
+      }
+    });
+
+    // this.state.products.map((product) => {
+    //   let validProduct = true;
+
+    //   if (
+    //     this.state.filterProperties.name &&
+    //     this.state.filterProperties.name.trim().length >= 3 &&
+    //     (product.name
+    //       .toLowerCase()
+    //       .includes(this.state.filterProperties.name.toLowerCase()) ||
+    //       product.model
+    //         .toLowerCase()
+    //         .includes(this.state.filterProperties.name.toLowerCase()))
+    //   )
+    //     validProduct = true;
+    //   else return;
+
+    //   if (
+    //     this.state.filterProperties.brand &&
+    //     product.brand === this.state.filterProperties.brand
+    //   )
+    //     validProduct = true;
+    //   else return;
+
+    //   if (validProduct) newList.push(product);
+    // });
+
+    this.state.filteredProducts = newList;
+    // console.log(newList);
   },
 
   // handleFilterPriceProducts({ filterProperties }, { key, val }) {
-  //   console.log("szajse", filterProperties);
+  //   console.log("handle", filterProperties);
 
   //   this.state.filterProperties = {
   //     ...this.state.filterProperties,

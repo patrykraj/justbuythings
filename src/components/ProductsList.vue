@@ -1,10 +1,11 @@
 <template>
-  <ul v-if="filteredProducts.length">
+  <ul v-if="filteredProducts.length || filterActive">
     <Product
       v-for="product in filteredProducts"
       :key="product.id"
       :product="product"
     />
+    <li v-if="!filteredProducts.length"><h2>No products.</h2></li>
   </ul>
   <ul v-else>
     <Product v-for="product in products" :key="product.id" :product="product" />
@@ -19,6 +20,7 @@ export default {
   props: {
     products: Array,
     filteredProducts: Array,
+    filterActive: Boolean,
   },
   components: {
     Product,
