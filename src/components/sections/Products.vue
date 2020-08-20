@@ -27,7 +27,6 @@ export default {
   },
   methods: {},
   computed: mapState(["products", "visibleProducts"]),
-  mounted: function() {},
 };
 </script>
 

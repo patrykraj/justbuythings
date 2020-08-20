@@ -1,13 +1,15 @@
 <template>
-  <form>
+  <form v-if="products.length">
     <div class="row">
       <input class="search-input" type="text" placeholder="Name or model" />
       <Button txt="Search" />
     </div>
     <div class="row">
       <select>
-        <option>TAK</option>
-        <option>NIE</option>
+        <option selected disabled>Select</option>
+        <option v-for="brand in brands" :key="brand" value="brand">{{
+          brand
+        }}</option>
       </select>
       <div class="price-select">
         <span>Price range</span>
@@ -18,16 +20,18 @@
     <div class="row">
       <div class="select-colors">
         <span>Select color:</span>
-        <label> <input type="checkbox" /> Color 1 </label>
-        <label> <input type="checkbox" /> Color 2 </label>
-        <label> <input type="checkbox" /> Color 3 </label>
+        <label v-for="color in colors" :key="color">
+          <input type="checkbox" value="color" /> {{ color }}
+        </label>
       </div>
     </div>
   </form>
+  <h2 v-else>Loading form...</h2>
 </template>
 
 <script>
 import Button from "./Button.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "Search",
@@ -36,6 +40,25 @@ export default {
   },
   components: {
     Button,
+  },
+  data: function() {
+    return {
+      colors: [],
+      brands: [],
+    };
+  },
+  computed: mapState(["products", "visibleProducts"]),
+  created: function() {
+    this.$watch(() => {
+      this.products.map((product) => {
+        if (!this.colors.includes(product.color)) {
+          this.colors.push(product.color);
+        }
+        if (!this.brands.includes(product.brand)) {
+          this.brands.push(product.brand);
+        }
+      });
+    });
   },
 };
 </script>
