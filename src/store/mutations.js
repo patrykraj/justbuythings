@@ -16,7 +16,7 @@ const mutations = {
 
   handleFilterProducts({ filterProperties }, { key, val, type }) {
     switch (type) {
-      case "SELECT":
+      case "SEARCH":
         this.state.filterProperties = {
           ...this.state.filterProperties,
           [key]: val,
@@ -53,9 +53,36 @@ const mutations = {
         console.log(filterProperties);
     }
 
+    this.state.filterActive = false;
+
     for (let key in this.state.filterProperties) {
       console.log(key, this.state.filterProperties[key]);
+
+      if (
+        this.state.filterProperties[key] &&
+        !(this.state.filterProperties[key] instanceof Object) &&
+        !this.state.filterActive
+      )
+        this.state.filterActive = true;
+      if (
+        Array.isArray(this.state.filterProperties[key]) &&
+        this.state.filterProperties[key].length &&
+        !this.state.filterActive
+      ) {
+        this.state.filterActive = true;
+      }
+      if (
+        this.state.filterProperties[key] instanceof Object &&
+        !this.state.filterActive
+      ) {
+        for (const [a] of Object.entries(this.state.filterProperties[key])) {
+          if (this.state.filterProperties[key][a] > 0)
+            this.state.filterActive = true;
+        }
+      }
     }
+
+    console.log(this.state.filterActive);
   },
 
   // handleFilterPriceProducts({ filterProperties }, { key, val }) {

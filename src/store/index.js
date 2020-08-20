@@ -23,6 +23,7 @@ const store = new Vuex.Store({
         to: null,
       },
     },
+    filterActive: false,
   },
 
   actions,

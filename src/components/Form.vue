@@ -1,7 +1,12 @@
 <template>
-  <form v-if="products.length">
+  <form v-if="products.length" @submit="handleSubmitSearch">
     <div class="row">
-      <input class="search-input" type="text" placeholder="Name or model" />
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Name or model"
+        @input="handleInputName"
+      />
       <Button txt="Search" />
     </div>
     <div class="row">
@@ -10,7 +15,7 @@
           handleFilterProducts({
             key: 'brand',
             val: $event.target.value,
-            type: 'SELECT',
+            type: 'SEARCH',
           })
         "
       >
@@ -90,6 +95,8 @@ export default {
     return {
       colors: [],
       brands: [],
+      name: "",
+      nameValid: false,
     };
   },
   computed: mapState(["products", "visibleProducts"]),
@@ -107,8 +114,31 @@ export default {
   },
   methods: {
     ...mapMutations(["handleFilterProducts"]),
-    tak(xd) {
-      console.log(xd);
+    handleSubmitSearch(e) {
+      e.preventDefault();
+
+      if (this.nameValid) {
+        this.handleFilterProducts({
+          key: "name",
+          val: this.name,
+          type: "SEARCH",
+        });
+      }
+    },
+    handleInputName(e) {
+      this.name = e.target.value;
+      if (e.target.value.trim().length >= 3) {
+        this.nameValid = true;
+      } else if (this.name.trim().length === 0) {
+        this.handleFilterProducts({
+          key: "name",
+          val: "",
+          type: "SEARCH",
+        });
+      } else {
+        this.nameValid = false;
+        this.name = "";
+      }
     },
   },
 };
