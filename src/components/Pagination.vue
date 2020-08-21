@@ -21,7 +21,7 @@
 import { mapMutations } from "vuex";
 
 export default {
-  name: "Search",
+  name: "Pagination",
   props: {
     productsQuantity: Number,
   },

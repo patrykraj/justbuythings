@@ -114,6 +114,34 @@ const mutations = {
         }
       }
 
+      if (this.state.filterProperties.colors.length) {
+        if (
+          productIsValid &&
+          this.state.filterProperties.colors.includes(product.color)
+        ) {
+          productIsValid = true;
+        } else {
+          productIsValid = false;
+        }
+      }
+
+      if (
+        this.state.filterProperties.price.from > 0 ||
+        this.state.filterProperties.price.to > 0
+      ) {
+        if (
+          productIsValid &&
+          this.state.filterProperties.price.to >=
+            this.state.filterProperties.price.from &&
+          product.price >= this.state.filterProperties.price.from &&
+          product.price <= this.state.filterProperties.price.to
+        ) {
+          productIsValid = true;
+        } else {
+          productIsValid = false;
+        }
+      }
+
       if (productIsValid) newList.push(product);
     });
 
