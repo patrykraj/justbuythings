@@ -9,7 +9,17 @@ const mutations = {
   },
 
   sortList({ products }, val) {
-    console.log("sorting", val, products);
+    const activeList = this.state.filteredProducts.length
+      ? this.state.filteredProducts
+      : this.state.products;
+
+    if (val === "ascending") {
+      activeList.sort((a, b) => (a.price > b.price ? 1 : -1));
+    } else {
+      activeList.sort((a, b) => (a.price > b.price ? -1 : 1));
+    }
+
+    return products;
   },
 
   handleFilterProducts({ filterProperties }, { key, val, type }) {

@@ -1,7 +1,7 @@
 <template>
   <div class="sort-container">
     <span>Sort price</span>
-    <button @click="sortList('descending')">Descending</button>
+    <button @click="sortList()">Descending</button>
     <button @click="sortList('ascending')">Ascending</button>
   </div>
 </template>
