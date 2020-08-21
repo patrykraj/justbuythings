@@ -5,11 +5,11 @@ const mutations = {
       to,
     };
 
-    if (this.state.filteredProducts.length) {
-      this.state.visibleProducts = this.state.filteredProducts.slice(from, to);
-    } else {
-      this.state.visibleProducts = this.state.products.slice(from, to);
-    }
+    // if (this.state.filteredProducts.length) {
+    //   this.state.visibleProducts = this.state.filteredProducts.slice(from, to);
+    // } else {
+    //   this.state.visibleProducts = this.state.products.slice(from, to);
+    // }
 
     return visibleProperties;
   },

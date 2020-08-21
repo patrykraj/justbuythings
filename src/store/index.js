@@ -9,7 +9,6 @@ const store = new Vuex.Store({
   state: {
     products: [],
     filteredProducts: [],
-    visibleProducts: [],
     visibleProperties: {
       from: 0,
       to: 4,

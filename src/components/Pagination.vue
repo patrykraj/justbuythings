@@ -24,12 +24,16 @@ export default {
   name: "Pagination",
   props: {
     productsQuantity: Number,
+    filteredQuantity: Number,
   },
   data() {
     return {
       buttons: [],
       itemsPerPage: 4,
       selectedPage: 0,
+      activeListQuantity: this.filteredQuantity
+        ? this.filteredQuantity
+        : this.productsQuantity,
     };
   },
   methods: {
@@ -55,28 +59,30 @@ export default {
     },
   },
   created: function() {
-    const newButtons = [];
-    for (
-      let i = 0;
-      i < Math.ceil(this.productsQuantity / this.itemsPerPage);
-      i++
-    ) {
-      const btn = {
-        id: i,
-        txt: i + 1,
-        click: () => {
-          this.selectedPage = i;
-          this.setVisibleProperties({
-            from: i * this.itemsPerPage,
-            to: (i + 1) * this.itemsPerPage,
-          });
-        },
-      };
+    this.$watch(() => {
+      const newButtons = [];
+      for (
+        let i = 0;
+        i < Math.ceil(this.activeListQuantity / this.itemsPerPage);
+        i++
+      ) {
+        const btn = {
+          id: i,
+          txt: i + 1,
+          click: () => {
+            this.selectedPage = i;
+            this.setVisibleProperties({
+              from: i * this.itemsPerPage,
+              to: (i + 1) * this.itemsPerPage,
+            });
+          },
+        };
 
-      newButtons.push(btn);
-    }
+        newButtons.push(btn);
+      }
 
-    this.buttons = newButtons;
+      this.buttons = newButtons;
+    });
   },
 };
 </script>

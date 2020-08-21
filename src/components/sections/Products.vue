@@ -2,7 +2,7 @@
   <section v-if="products.length" class="products">
     <SectionHeader title="Products" sorting />
     <ProductsList
-      :products="this.visibleProducts"
+      :products="this.products"
       :filteredProducts="this.filteredProducts"
       :filterActive="this.filterActive"
     />
@@ -22,17 +22,12 @@ import Pagination from "../Pagination.vue";
 import { mapState } from "vuex";
 
 export default {
-  name: "Search",
-  props: {},
+  name: "Products",
   components: {
     SectionHeader,
     ProductsList,
     Pagination,
   },
-  data() {
-    return {};
-  },
-  methods: {},
   computed: mapState([
     "products",
     "visibleProducts",

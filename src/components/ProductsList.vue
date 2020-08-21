@@ -1,19 +1,31 @@
 <template>
   <ul v-if="filteredProducts.length || filterActive">
     <Product
-      v-for="product in filteredProducts"
+      v-for="product in filteredProducts.slice(
+        visibleProperties.from,
+        visibleProperties.to
+      )"
       :key="product.id"
       :product="product"
     />
     <li v-if="!filteredProducts.length"><h2>No products.</h2></li>
   </ul>
   <ul v-else>
-    <Product v-for="product in products" :key="product.id" :product="product" />
+    <Product
+      v-for="product in products.slice(
+        visibleProperties.from,
+        visibleProperties.to
+      )"
+      :key="product.id"
+      :product="product"
+    />
   </ul>
 </template>
 
 <script>
 import Product from "./Product.vue";
+
+import { mapState } from "vuex";
 
 export default {
   name: "ProductsList",
@@ -21,6 +33,9 @@ export default {
     products: Array,
     filteredProducts: Array,
     filterActive: Boolean,
+  },
+  computed: {
+    ...mapState(["visibleProperties"]),
   },
   components: {
     Product,
