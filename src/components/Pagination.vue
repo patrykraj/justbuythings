@@ -31,9 +31,6 @@ export default {
       buttons: [],
       itemsPerPage: 4,
       selectedPage: 0,
-      activeListQuantity: this.filteredQuantity
-        ? this.filteredQuantity
-        : this.productsQuantity,
     };
   },
   methods: {
@@ -48,7 +45,7 @@ export default {
       } else if (
         val === "+" &&
         this.selectedPage <
-          Math.floor(this.productsQuantity / this.itemsPerPage)
+          Math.floor(this.activeListQuantity / this.itemsPerPage)
       ) {
         this.setVisibleProperties({
           from: (this.selectedPage + 1) * this.itemsPerPage,
@@ -56,6 +53,12 @@ export default {
         });
         this.selectedPage = this.selectedPage + 1;
       }
+    },
+  },
+  computed: {
+    activeListQuantity: function() {
+      if (this.filteredQuantity) return this.filteredQuantity;
+      return this.productsQuantity;
     },
   },
   created: function() {

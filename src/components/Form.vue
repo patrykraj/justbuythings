@@ -19,7 +19,8 @@
           })
         "
       >
-        <option selected disabled>Select</option>
+        <option selected disabled>Select brand</option>
+        <option value="">Any</option>
         <option v-for="brand in brands" :key="brand" :value="brand">{{
           brand
         }}</option>
