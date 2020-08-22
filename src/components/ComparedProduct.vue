@@ -1,6 +1,10 @@
 <template>
   <li :class="product.special ? 'special' : null">
-    <Button txt="Delete" :special="product.special" />
+    <Button
+      txt="Delete"
+      :special="product.special"
+      @clicked="removeFromCompared(product.id)"
+    />
     <div class="img-container">
       <div class="img"></div>
     </div>
@@ -24,6 +28,8 @@
 <script>
 import Button from "./Button";
 
+import { mapMutations } from "vuex";
+
 export default {
   name: "Product",
   props: {
@@ -31,6 +37,9 @@ export default {
   },
   components: {
     Button,
+  },
+  methods: {
+    ...mapMutations(["removeFromCompared"]),
   },
 };
 </script>

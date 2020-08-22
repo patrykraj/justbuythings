@@ -39,6 +39,16 @@ const mutations = {
     return comparedProducts;
   },
 
+  removeFromCompared({ comparedProducts }, id) {
+    const newList = this.state.comparedProducts.filter(
+      (product) => product.id !== id
+    );
+
+    this.state.comparedProducts = newList;
+
+    return comparedProducts;
+  },
+
   handleFilterProducts({ filterProperties }, { key, val, type }) {
     switch (type) {
       case "SEARCH":
