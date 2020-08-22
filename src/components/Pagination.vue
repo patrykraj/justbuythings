@@ -1,8 +1,6 @@
 <template>
   <div class="pagination-container">
-    <button @click="handleSetPage('-')">
-      left
-    </button>
+    <button @click="handleSetPage('-')">-</button>
     <button
       v-for="btn in this.buttons"
       :key="btn.id"
@@ -12,7 +10,7 @@
       {{ btn.txt }}
     </button>
     <button @click="handleSetPage('+')">
-      {{ ">" }}
+      +
     </button>
   </div>
 </template>

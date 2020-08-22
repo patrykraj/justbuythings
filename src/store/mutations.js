@@ -22,6 +22,23 @@ const mutations = {
     return products;
   },
 
+  addToCompared({ comparedProducts }, item) {
+    if (this.state.comparedProducts.length < 3) {
+      let itemValid = true;
+
+      this.state.comparedProducts.map((product) => {
+        if (product.id === item.id) {
+          console.log("product already in the list");
+          itemValid = false;
+        }
+      });
+
+      if (itemValid) this.state.comparedProducts.push(item);
+    }
+
+    return comparedProducts;
+  },
+
   handleFilterProducts({ filterProperties }, { key, val, type }) {
     switch (type) {
       case "SEARCH":

@@ -1,5 +1,7 @@
 <template>
-  <button :class="special ? 'special-btn' : null">{{ txt }}</button>
+  <button :class="special ? 'special-btn' : null" @click="executePropsFunction">
+    {{ txt }}
+  </button>
 </template>
 
 <script>
@@ -8,6 +10,11 @@ export default {
   props: {
     txt: String,
     special: Boolean,
+  },
+  methods: {
+    executePropsFunction() {
+      this.$emit("clicked");
+    },
   },
 };
 </script>

@@ -9,7 +9,11 @@
       <p>Brand: {{ product.brand }}</p>
     </div>
     <div class="price-container">
-      <Button txt="Add to compare" :special="product.special" />
+      <Button
+        txt="Add to compare"
+        :special="product.special"
+        @clicked="addToCompared(product)"
+      />
       <h4>${{ product.price.toFixed(2) }} net</h4>
       <p>${{ (product.price * 0.23 + product.price).toFixed(2) }} gross</p>
     </div>
@@ -19,6 +23,8 @@
 <script>
 import Button from "./Button";
 
+import { mapMutations } from "vuex";
+
 export default {
   name: "Product",
   props: {
@@ -26,6 +32,9 @@ export default {
   },
   components: {
     Button,
+  },
+  methods: {
+    ...mapMutations(["addToCompared"]),
   },
 };
 </script>
