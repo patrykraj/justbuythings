@@ -49,6 +49,12 @@ const mutations = {
     return comparedProducts;
   },
 
+  setPage({ selectedPage }, page) {
+    this.state.selectedPage = page;
+
+    return selectedPage;
+  },
+
   handleFilterProducts({ filterProperties }, { key, val, type }) {
     switch (type) {
       case "SEARCH":
@@ -179,6 +185,13 @@ const mutations = {
 
       if (productIsValid) newList.push(product);
     });
+
+    this.state.visibleProperties = {
+      from: 0,
+      to: 4,
+    };
+
+    this.state.selectedPage = 0;
 
     this.state.filteredProducts = newList;
   },

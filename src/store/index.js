@@ -23,6 +23,7 @@ const store = new Vuex.Store({
         to: null,
       },
     },
+    selectedPage: 0,
     filterActive: false,
   },
 

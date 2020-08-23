@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Pagination",
@@ -28,18 +28,22 @@ export default {
     return {
       buttons: [],
       itemsPerPage: 4,
-      selectedPage: 0,
     };
   },
   methods: {
-    ...mapMutations(["setVisibleProperties"]),
+    ...mapMutations(["setVisibleProperties", "setPage"]),
+
     handleSetPage(val) {
+      let nextPage;
+
       if (val === "-" && this.selectedPage) {
         this.setVisibleProperties({
           from: (this.selectedPage - 1) * this.itemsPerPage,
           to: this.selectedPage * this.itemsPerPage,
         });
-        this.selectedPage = this.selectedPage - 1;
+        nextPage = this.selectedPage - 1;
+
+        this.setPage(nextPage);
       } else if (
         val === "+" &&
         this.selectedPage <
@@ -49,11 +53,14 @@ export default {
           from: (this.selectedPage + 1) * this.itemsPerPage,
           to: (this.selectedPage + 2) * this.itemsPerPage,
         });
-        this.selectedPage = this.selectedPage + 1;
+        nextPage = this.selectedPage + 1;
+
+        this.setPage(nextPage);
       }
     },
   },
   computed: {
+    ...mapState(["selectedPage"]),
     activeListQuantity: function() {
       if (this.filteredQuantity) return this.filteredQuantity;
       return this.productsQuantity;
@@ -71,7 +78,7 @@ export default {
           id: i,
           txt: i + 1,
           click: () => {
-            this.selectedPage = i;
+            this.setPage(i);
             this.setVisibleProperties({
               from: i * this.itemsPerPage,
               to: (i + 1) * this.itemsPerPage,

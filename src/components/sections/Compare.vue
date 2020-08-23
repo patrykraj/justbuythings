@@ -35,6 +35,6 @@ ul {
   padding: 2rem 0;
   list-style: none;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 </style>

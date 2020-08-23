@@ -48,6 +48,15 @@ export default {
 li {
   flex: 1 0 25%;
   margin: 0 1rem;
+  max-width: 33%;
+}
+
+li:first-child {
+  margin-left: 0;
+}
+
+li:last-child {
+  margin-right: 0;
 }
 
 div.img {
