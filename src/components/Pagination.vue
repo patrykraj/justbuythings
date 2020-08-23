@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="pagination-container" v-if="activeListQuantity > 4">
+    <div
+      class="pagination-container"
+      v-if="activeListQuantity > this.itemsPerPage"
+    >
       <button @click="handleSetPage('-')">-</button>
       <button
         v-for="btn in this.buttons"
@@ -14,7 +17,11 @@
         +
       </button>
     </div>
-    <p v-if="filterActive && filteredQuantity && filteredQuantity < 4">
+    <p
+      v-if="
+        filterActive && filteredQuantity && filteredQuantity < this.itemsPerPage
+      "
+    >
       Page 1 of 1
     </p>
   </div>
@@ -33,7 +40,6 @@ export default {
   data() {
     return {
       buttons: [],
-      itemsPerPage: 4,
     };
   },
   methods: {
@@ -66,7 +72,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(["selectedPage"]),
+    ...mapState(["selectedPage", "itemsPerPage"]),
     activeListQuantity: function() {
       if (this.filteredQuantity) return this.filteredQuantity;
       else if (this.filterActive) return 1;

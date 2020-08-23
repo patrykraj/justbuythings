@@ -168,7 +168,7 @@ const mutations = {
 
     this.state.visibleProperties = {
       from: 0,
-      to: 4,
+      to: this.state.itemsPerPage,
     };
 
     this.state.selectedPage = 0;

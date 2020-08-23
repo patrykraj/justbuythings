@@ -23,8 +23,9 @@ const store = new Vuex.Store({
         to: null,
       },
     },
-    selectedPage: 0,
     filterActive: false,
+    selectedPage: 0,
+    itemsPerPage: 4,
   },
 
   actions,
