@@ -37,4 +37,20 @@ ul {
   display: flex;
   justify-content: center;
 }
+
+@media (max-width: 768px) {
+  ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  li {
+    min-width: 250px;
+    max-width: 50%;
+  }
+
+  li + li {
+    margin: 1rem 0;
+  }
+}
 </style>

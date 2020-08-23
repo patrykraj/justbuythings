@@ -49,4 +49,19 @@ ul {
   padding: 0;
   margin: 0;
 }
+
+@media (max-width: 600px) {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0 2rem;
+  }
+}
+
+@media (max-width: 450px) {
+  ul {
+    justify-content: center;
+  }
+}
 </style>

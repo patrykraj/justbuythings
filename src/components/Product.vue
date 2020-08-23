@@ -96,4 +96,23 @@ div.data-container {
 div.price-container {
   min-width: 160px;
 }
+
+@media (max-width: 600px) {
+  li.product-listed {
+    flex-direction: column;
+    flex: 1 0 0;
+    align-items: center;
+    max-width: 40%;
+    min-width: 200px;
+    text-align: center;
+    border: none;
+  }
+}
+
+@media (max-width: 450px) {
+  li.product-listed {
+    max-width: 60%;
+    min-width: 300px;
+  }
+}
 </style>
