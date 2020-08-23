@@ -112,7 +112,7 @@ div.price-container {
 @media (max-width: 450px) {
   li.product-listed {
     max-width: 60%;
-    min-width: 300px;
+    min-width: 250px;
   }
 }
 </style>

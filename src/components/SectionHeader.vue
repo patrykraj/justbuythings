@@ -33,4 +33,10 @@ h2 {
   font-size: 2rem;
   margin: 10px 0;
 }
+
+@media (max-width: 500px) {
+  div.section-header-wrapper {
+    flex-flow: column;
+  }
+}
 </style>

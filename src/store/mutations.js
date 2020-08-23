@@ -15,8 +15,10 @@ const mutations = {
 
     if (val === "ascending") {
       activeList.sort((a, b) => (a.price > b.price ? 1 : -1));
+      this.state.sorting = val;
     } else {
       activeList.sort((a, b) => (a.price > b.price ? -1 : 1));
+      this.state.sorting = val;
     }
 
     return products;

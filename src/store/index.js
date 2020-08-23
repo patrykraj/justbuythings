@@ -26,6 +26,7 @@ const store = new Vuex.Store({
     filterActive: false,
     selectedPage: 0,
     itemsPerPage: 4,
+    sorting: null,
   },
 
   actions,

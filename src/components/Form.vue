@@ -1,5 +1,5 @@
 <template>
-  <form v-if="products.length" @submit="handleSubmitSearch">
+  <form class="filter-form" v-if="products.length" @submit="handleSubmitSearch">
     <div class="row">
       <input
         class="search-input"
@@ -9,8 +9,9 @@
       />
       <Button txt="Search" />
     </div>
-    <div class="row">
+    <div class="row column-row">
       <select
+        class="select-input"
         @change="
           handleFilterProducts({
             key: 'brand',
@@ -60,7 +61,7 @@
     <div class="row">
       <div class="select-colors">
         <span>Select color:</span>
-        <label v-for="color in colors" :key="color">
+        <label class="color-input" v-for="color in colors" :key="color">
           <input
             type="checkbox"
             :value="color"
@@ -72,7 +73,8 @@
               })
             "
           />
-          {{ color }}
+          <span class="checkmark"></span>
+          <span class="color-description">{{ color }}</span>
         </label>
       </div>
     </div>
@@ -152,12 +154,32 @@ div.row {
   padding: 1rem 0;
 }
 
+input:focus {
+  outline: none;
+}
+
 input.search-input {
   width: 100%;
   margin: 5px;
   margin-left: 0;
+  padding-left: 10px;
   border-radius: 10px;
   border: 2px solid #2c3e50;
+}
+
+select.select-input {
+  padding: 10px 5px;
+  width: 150px;
+  border: 2px solid #2c3e50;
+}
+
+select.select-input option {
+  display: block;
+  font-size: 14px;
+  font-family: sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  padding: 0.6em 1.4em 0.5em 0.8em;
 }
 
 div.price-select {
@@ -167,5 +189,85 @@ div.price-select {
 
 input.price-select-input {
   margin: 0 5px;
+  padding: 10px 5px;
+  border: 2px solid #2c3e50;
+}
+
+label.color-input {
+  position: relative;
+  min-width: 60px;
+  padding-left: 20px;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 5px;
+}
+
+label.color-input input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+}
+
+label.color-input:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+label.color-input input:checked ~ .checkmark {
+  background-color: #42b883;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+label.color-input input:checked ~ .checkmark:after {
+  display: block;
+}
+
+label.color-input .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+span.color-description {
+  min-width: 40px;
+  display: block;
+  text-align: left;
+}
+
+@media (max-width: 500px) {
+  .column-row {
+    flex-flow: column;
+    padding: 0 !important;
+  }
+
+  .column-row > * {
+    margin-bottom: 1rem;
+    padding: 0;
+  }
 }
 </style>

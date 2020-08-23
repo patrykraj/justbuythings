@@ -35,6 +35,10 @@ export default {
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -48,5 +52,11 @@ export default {
 
 section {
   margin: 2rem 0;
+}
+
+@media (max-width: 400px) {
+  #app {
+    padding: 0 10px;
+  }
 }
 </style>
