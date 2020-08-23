@@ -1,17 +1,22 @@
 <template>
-  <div class="pagination-container">
-    <button @click="handleSetPage('-')">-</button>
-    <button
-      v-for="btn in this.buttons"
-      :key="btn.id"
-      :class="btn.id === selectedPage ? 'active' : null"
-      @click="btn.click"
-    >
-      {{ btn.txt }}
-    </button>
-    <button @click="handleSetPage('+')">
-      +
-    </button>
+  <div>
+    <div class="pagination-container" v-if="activeListQuantity > 4">
+      <button @click="handleSetPage('-')">-</button>
+      <button
+        v-for="btn in this.buttons"
+        :key="btn.id"
+        :class="btn.id === selectedPage ? 'active' : null"
+        @click="btn.click"
+      >
+        {{ btn.txt }}
+      </button>
+      <button @click="handleSetPage('+')">
+        +
+      </button>
+    </div>
+    <p v-if="filterActive && filteredQuantity && filteredQuantity < 4">
+      Page 1 of 1
+    </p>
   </div>
 </template>
 
@@ -23,6 +28,7 @@ export default {
   props: {
     productsQuantity: Number,
     filteredQuantity: Number,
+    filterActive: Boolean,
   },
   data() {
     return {
@@ -63,6 +69,7 @@ export default {
     ...mapState(["selectedPage"]),
     activeListQuantity: function() {
       if (this.filteredQuantity) return this.filteredQuantity;
+      else if (this.filterActive) return 1;
       return this.productsQuantity;
     },
   },

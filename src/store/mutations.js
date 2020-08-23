@@ -96,38 +96,13 @@ const mutations = {
 
     this.state.filterActive = false;
 
-    for (let key in this.state.filterProperties) {
-      console.log(key, this.state.filterProperties[key]);
-
-      if (
-        this.state.filterProperties[key] &&
-        !(this.state.filterProperties[key] instanceof Object) &&
-        !this.state.filterActive
-      )
-        this.state.filterActive = true;
-      if (
-        Array.isArray(this.state.filterProperties[key]) &&
-        this.state.filterProperties[key].length &&
-        !this.state.filterActive
-      ) {
-        this.state.filterActive = true;
-      }
-      if (
-        this.state.filterProperties[key] instanceof Object &&
-        !this.state.filterActive
-      ) {
-        for (const [a] of Object.entries(this.state.filterProperties[key])) {
-          if (this.state.filterProperties[key][a] > 0)
-            this.state.filterActive = true;
-        }
-      }
-    }
-
     const newList = [];
 
     this.state.products.map((product) => {
       let productIsValid = true;
       if (this.state.filterProperties.name) {
+        this.state.filterActive = true;
+
         if (
           productIsValid &&
           this.state.filterProperties.name.trim().length >= 3 &&
@@ -145,6 +120,8 @@ const mutations = {
       }
 
       if (this.state.filterProperties.brand) {
+        this.state.filterActive = true;
+
         if (
           productIsValid &&
           product.brand === this.state.filterProperties.brand
@@ -156,6 +133,8 @@ const mutations = {
       }
 
       if (this.state.filterProperties.colors.length) {
+        this.state.filterActive = true;
+
         if (
           productIsValid &&
           this.state.filterProperties.colors.includes(product.color)
@@ -170,6 +149,7 @@ const mutations = {
         this.state.filterProperties.price.from > 0 ||
         this.state.filterProperties.price.to > 0
       ) {
+        this.state.filterActive = true;
         if (
           productIsValid &&
           this.state.filterProperties.price.to >=

@@ -9,6 +9,7 @@
     <Pagination
       :productsQuantity="this.products.length"
       :filteredQuantity="this.filteredProducts.length"
+      :filterActive="this.filterActive"
     />
   </section>
   <h2 v-else>Loading...</h2>
