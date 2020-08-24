@@ -184,8 +184,26 @@ div.row {
   border-radius: 5px;
   padding: 5px 10px;
   font-size: 0.9rem;
-  transform: translateX(calc(100% - 100px));
   z-index: 1;
+  transform: translateX(calc(100% - 100px));
+  transform-origin: center;
+  animation: pop 0.2s linear;
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0) translateX(calc(100% - 100px));
+  }
+
+  75% {
+    transform: scale(1.2) translateX(calc(100% - 100px));
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(calc(100% - 100px));
+  }
 }
 
 .error-container::before {

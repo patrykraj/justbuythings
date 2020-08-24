@@ -1,5 +1,9 @@
 <template>
-  <button :class="special ? 'special-btn' : null" @click="executePropsFunction">
+  <button
+    :class="special ? 'special-btn' : null"
+    @click="executePropsFunction"
+    :disabled="disabled"
+  >
     {{ txt }}
   </button>
 </template>
@@ -10,6 +14,7 @@ export default {
   props: {
     txt: String,
     special: Boolean,
+    disabled: Boolean,
   },
   methods: {
     executePropsFunction() {
@@ -36,6 +41,16 @@ button:hover {
   color: rgb(245, 245, 245);
 }
 
+button:disabled {
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid rgb(150, 150, 150);
+}
+
+button:disabled:hover {
+  cursor: default;
+}
+
 button.special-btn {
   color: rgb(245, 245, 245);
 }
@@ -59,5 +74,17 @@ button.special-btn::before {
   left: 4px;
   background: #42b883;
   transition: all 0.3s cubic-bezier(0, -0.19, 0.99, 1.6);
+}
+
+button.special-btn:disabled:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+button.special-btn:disabled:hover::before {
+  transform: translate(0, 0);
+}
+
+button.special-btn:disabled::before {
+  background: rgba(0, 0, 0, 0.2);
 }
 </style>

@@ -12,6 +12,7 @@
       <Button
         txt="Add to compare"
         :special="product.special"
+        :disabled="checkInCompared(product)"
         @clicked="addToCompared(product)"
       />
       <h4>${{ product.price.toFixed(2) }} net</h4>
@@ -23,7 +24,7 @@
 <script>
 import Button from "../shared/Button";
 
-import { mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Product",
@@ -33,8 +34,25 @@ export default {
   components: {
     Button,
   },
+  data: function() {
+    return {
+      disabledProducts: [],
+    };
+  },
   methods: {
     ...mapMutations(["addToCompared"]),
+    checkInCompared(productToCheck) {
+      let inCompared = false;
+
+      this.comparedProducts.map((product) => {
+        if (productToCheck.id === product.id) inCompared = true;
+      });
+
+      return inCompared;
+    },
+  },
+  computed: {
+    ...mapState(["comparedProducts"]),
   },
 };
 </script>
