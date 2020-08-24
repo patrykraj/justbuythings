@@ -28,6 +28,7 @@ const store = new Vuex.Store({
     itemsPerPage: 4,
     sorting: null,
     failedToFetch: null,
+    loading: false,
   },
 
   actions,

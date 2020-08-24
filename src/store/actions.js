@@ -2,6 +2,8 @@ import axios from "axios";
 
 const actions = {
   getProducts() {
+    this.state.loading = true;
+
     axios
       .get(
         "https://my-json-server.typicode.com/patrykraj/product-comparison/products"
@@ -12,8 +14,12 @@ const actions = {
           this.state.visibleProperties.from,
           this.state.visibleProperties.to
         );
+        this.state.loading = false;
       })
-      .catch((err) => (this.state.failedToFetch = err));
+      .catch((err) => {
+        this.state.failedToFetch = err;
+        this.state.loading = false;
+      });
   },
 };
 

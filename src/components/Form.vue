@@ -1,5 +1,5 @@
 <template>
-  <form class="filter-form" v-if="products.length" @submit="handleSubmitSearch">
+  <form class="filter-form" @submit="handleSubmitSearch">
     <div class="row">
       <input
         class="search-input"
@@ -79,7 +79,6 @@
       </div>
     </div>
   </form>
-  <h2 v-else>Loading form...</h2>
 </template>
 
 <script>

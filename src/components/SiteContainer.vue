@@ -3,6 +3,7 @@
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Price Comparison App" />
     <Error v-if="this.failedToFetch" :err="this.failedToFetch" />
+    <Loader v-else-if="this.loading" />
     <main v-else class="main">
       <Search />
       <Products />
@@ -12,11 +13,12 @@
 </template>
 
 <script>
-import HelloWorld from "./HelloWorld.vue";
 import Search from "./sections/Search.vue";
 import Products from "./sections/Products.vue";
 import Compare from "./sections/Compare.vue";
+import HelloWorld from "./HelloWorld.vue";
 import Error from "./Error.vue";
+import Loader from "./Loader.vue";
 
 import { mapState } from "vuex";
 
@@ -28,8 +30,9 @@ export default {
     Products,
     Compare,
     Error,
+    Loader,
   },
-  computed: mapState(["failedToFetch"]),
+  computed: mapState(["failedToFetch", "loading"]),
   created: function() {
     this.$store.dispatch("getProducts");
   },

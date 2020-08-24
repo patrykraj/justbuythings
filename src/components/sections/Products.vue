@@ -12,7 +12,6 @@
       :filterActive="this.filterActive"
     />
   </section>
-  <h2 v-else>Loading...</h2>
 </template>
 
 <script>
@@ -37,5 +36,3 @@ export default {
   ]),
 };
 </script>
-
-<style scoped></style>

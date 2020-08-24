@@ -4,8 +4,8 @@
       <div class="img"></div>
     </div>
     <div class="data-container">
-      <h3>{{ product.name }}</h3>
-      <p>Model: {{ product.model }}</p>
+      <h3 class="product-name">{{ product.name }}</h3>
+      <p class="product-model">Model: {{ product.model }}</p>
       <p>Brand: {{ product.brand }}</p>
     </div>
     <div class="price-container">
@@ -93,6 +93,16 @@ div.data-container {
   padding: 0 15px;
 }
 
+h3.product-name {
+  margin-top: 0;
+  margin-bottom: 7px;
+}
+
+p.product-model {
+  font-size: 0.9rem;
+  margin-top: 0;
+}
+
 div.price-container {
   min-width: 160px;
 }
@@ -106,6 +116,10 @@ div.price-container {
     min-width: 200px;
     text-align: center;
     border: none;
+  }
+
+  h3.product-name {
+    margin: 1rem 0;
   }
 }
 
