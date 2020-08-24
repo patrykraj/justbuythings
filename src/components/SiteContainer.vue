@@ -2,8 +2,8 @@
   <div class="site-container">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Price Comparison App" />
-    <Error v-if="this.failedToFetch" :err="this.failedToFetch" />
-    <Loader v-else-if="this.loading" />
+    <Loader v-if="this.loading" />
+    <Error v-else-if="this.failedToFetch" :err="this.failedToFetch" />
     <main v-else class="main">
       <Search />
       <Products />
@@ -17,8 +17,8 @@ import Search from "./sections/Search.vue";
 import Products from "./sections/Products.vue";
 import Compare from "./sections/Compare.vue";
 import HelloWorld from "./HelloWorld.vue";
-import Error from "./Error.vue";
-import Loader from "./Loader.vue";
+import Error from "./shared/Error.vue";
+import Loader from "./shared/Loader.vue";
 
 import { mapState } from "vuex";
 

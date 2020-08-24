@@ -6,14 +6,11 @@
 </template>
 
 <script>
-import SectionHeader from "../SectionHeader.vue";
+import SectionHeader from "../shared/SectionHeader.vue";
 import Form from "../Form.vue";
 
 export default {
   name: "Search",
-  props: {
-    msg: String,
-  },
   components: {
     SectionHeader,
     Form,

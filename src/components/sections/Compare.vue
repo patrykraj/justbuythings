@@ -16,8 +16,8 @@
 <script>
 import { mapState } from "vuex";
 
-import SectionHeader from "../SectionHeader.vue";
-import ComparedProduct from "../ComparedProduct.vue";
+import SectionHeader from "../shared/SectionHeader.vue";
+import ComparedProduct from "../products/ComparedProduct.vue";
 
 export default {
   name: "Compare",

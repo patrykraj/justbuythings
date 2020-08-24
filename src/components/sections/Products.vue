@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import SectionHeader from "../SectionHeader.vue";
-import ProductsList from "../ProductsList.vue";
-import Pagination from "../Pagination.vue";
+import SectionHeader from "../shared/SectionHeader.vue";
+import ProductsList from "../products/ProductsList.vue";
+import Pagination from "../products/Pagination.vue";
 
 import { mapState } from "vuex";
 

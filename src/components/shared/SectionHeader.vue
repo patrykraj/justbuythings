@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Sort from "./Sort.vue";
+import Sort from "../products/Sort.vue";
 
 export default {
   name: "SectionHeader",

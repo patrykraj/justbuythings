@@ -8,6 +8,7 @@
         @input="handleInputName"
       />
       <Button txt="Search" />
+      <div v-if="this.error" class="error-container">Min. 3 characters</div>
     </div>
     <div class="row column-row">
       <select
@@ -82,7 +83,7 @@
 </template>
 
 <script>
-import Button from "./Button.vue";
+import Button from "./shared/Button.vue";
 import { mapState, mapMutations } from "vuex";
 
 export default {
@@ -99,9 +100,20 @@ export default {
       brands: [],
       name: "",
       nameValid: false,
+      err: false,
     };
   },
-  computed: mapState(["products", "visibleProducts"]),
+  computed: {
+    ...mapState(["products", "visibleProducts"]),
+    error: {
+      get: function() {
+        return this.err;
+      },
+      set: function(newValue) {
+        this.err = newValue;
+      },
+    },
+  },
   created: function() {
     this.$watch(() => {
       this.products.map((product) => {
@@ -125,9 +137,13 @@ export default {
           val: this.name,
           type: "SEARCH",
         });
+      } else {
+        this.setError(true);
       }
     },
     handleInputName(e) {
+      this.setError(false);
+
       this.name = e.target.value;
       if (e.target.value.trim().length >= 3) {
         this.nameValid = true;
@@ -142,6 +158,10 @@ export default {
         this.name = "";
       }
     },
+
+    setError(val) {
+      this.err = val;
+    },
   },
 };
 </script>
@@ -151,6 +171,33 @@ div.row {
   display: flex;
   justify-content: space-between;
   padding: 1rem 0;
+  position: relative;
+}
+
+.error-container {
+  background: crimson;
+  color: white;
+  position: absolute;
+  display: block;
+  bottom: -110%;
+  right: 50%;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  transform: translateX(calc(100% - 100px));
+  z-index: 1;
+}
+
+.error-container::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -15px;
+  left: 40%;
+  width: 10px;
+  height: 10px;
+  border: 10px solid transparent;
+  border-bottom: 10px solid crimson;
 }
 
 input:focus {

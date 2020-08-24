@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Button from "./Button";
+import Button from "../shared/Button";
 
 import { mapMutations } from "vuex";
 
