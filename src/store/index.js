@@ -27,6 +27,7 @@ const store = new Vuex.Store({
     selectedPage: 0,
     itemsPerPage: 4,
     sorting: null,
+    failedToFetch: null,
   },
 
   actions,

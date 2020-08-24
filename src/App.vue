@@ -1,62 +1,16 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Price Comparison App" />
-    <Search />
-    <Products />
-    <Compare />
+    <SiteContainer />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import Search from "./components/sections/Search.vue";
-import Products from "./components/sections/Products.vue";
-import Compare from "./components/sections/Compare.vue";
+import SiteContainer from "./components/SiteContainer.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
-    Search,
-    Products,
-    Compare,
-  },
-  created: function() {
-    this.$store.dispatch("getProducts");
+    SiteContainer,
   },
 };
 </script>
-
-<style>
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin: 60px auto 0;
-  max-width: 1024px;
-  padding: 0 1rem;
-}
-
-section {
-  margin: 2rem 0;
-}
-
-@media (max-width: 400px) {
-  #app {
-    padding: 0 10px;
-  }
-}
-</style>

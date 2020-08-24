@@ -12,7 +12,8 @@ const actions = {
           this.state.visibleProperties.from,
           this.state.visibleProperties.to
         );
-      });
+      })
+      .catch((err) => (this.state.failedToFetch = err));
   },
 };
 
