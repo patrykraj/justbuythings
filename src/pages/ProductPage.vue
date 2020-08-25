@@ -1,12 +1,12 @@
 <template>
   <div class="product-page">
-    <h1>PRODUCT PAGE</h1>
+    <NavBar />
     <div v-if="this.visibleProduct" class="product-container">
       <div class="img-container big">
         <div class="img big"></div>
       </div>
       <div class="product-info">
-        <p>{{ this.visibleProduct.brand }}</p>
+        <p class="product-brand">{{ this.visibleProduct.brand }}</p>
         <h2 class="product-name">
           {{ this.visibleProduct.name }}
           <span class="small-title">
@@ -27,6 +27,9 @@
         <p>
           Color: <strong>{{ this.visibleProduct.color }}</strong>
         </p>
+        <div class="buy-container">
+          <Button class="buy-btn" txt="Add to basket" :special="true" />
+        </div>
         <ul class="product-additional-list">
           <li>
             <button @click="this.setDescReveal">
@@ -50,10 +53,17 @@
 <script>
 import { mapState } from "vuex";
 
+import Button from "../components/shared/Button";
+import NavBar from "../components/navigation/NavBar.vue";
+
 export default {
   name: "ProductPage",
   props: {
     id: Number,
+  },
+  components: {
+    Button,
+    NavBar,
   },
   data: function() {
     return {
@@ -80,13 +90,26 @@ export default {
 </script>
 
 <style scoped>
+.product-page {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: space-between;
+  min-height: 100vh;
+}
+
 .product-container {
   display: flex;
   justify-content: space-between;
+  margin-top: 70px;
 }
 
 .product-container > * {
   flex: 1;
+}
+
+.product-brand {
+  margin-top: 0;
 }
 
 .product-additional-list {
@@ -162,5 +185,17 @@ export default {
 .small-title {
   text-transform: lowercase;
   font-size: 1.4rem;
+}
+
+.buy-container {
+  margin-bottom: 1rem;
+}
+
+.buy-btn {
+  width: 100%;
+}
+
+.buy-btn:hover::before {
+  background: #64daa5;
 }
 </style>
