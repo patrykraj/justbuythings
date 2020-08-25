@@ -182,6 +182,7 @@ div.row {
   bottom: -110%;
   right: 50%;
   border-radius: 5px;
+  box-shadow: 0 0 1px 2px rgba(0, 0, 0, 0.4);
   padding: 5px 10px;
   font-size: 0.9rem;
   z-index: 1;
@@ -232,7 +233,6 @@ input.search-input {
 }
 
 select.select-input {
-  padding: 10px 5px;
   width: 150px;
   border: 2px solid #2c3e50;
 }

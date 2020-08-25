@@ -1,16 +1,14 @@
 <template>
   <div id="app">
-    <SiteContainer />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import SiteContainer from "./components/SiteContainer.vue";
-
 export default {
   name: "App",
-  components: {
-    SiteContainer,
+  created: function() {
+    this.$store.dispatch("getProducts");
   },
 };
 </script>

@@ -1,10 +1,19 @@
 <template>
   <li class="product-listed" :class="product.special ? 'special' : null">
-    <div class="img-container">
-      <div class="img"></div>
-    </div>
+    <router-link :to="{ name: 'products', params: { id: product.id } }">
+      <div class="img-container">
+        <div class="img"></div>
+      </div>
+    </router-link>
     <div class="data-container">
-      <h3 class="product-name">{{ product.name }}</h3>
+      <router-link
+        class="product-link"
+        :to="{ name: 'products', params: { id: product.id } }"
+        ><h3 class="product-name">{{ product.name }}</h3>
+        <div>
+          <span></span>
+        </div>
+      </router-link>
       <p class="product-model">Model: {{ product.model }}</p>
       <p>Brand: {{ product.brand }}</p>
     </div>
@@ -109,6 +118,43 @@ div.img::after {
 div.data-container {
   flex-grow: 1;
   padding: 0 15px;
+}
+
+a.product-link {
+  text-decoration: none;
+  color: #2c3e50;
+  transition: all 0.3s;
+  transform-origin: center;
+  display: inline-block;
+  position: relative;
+}
+
+a.product-link:hover {
+  color: #0a1c30;
+}
+
+a.product-link div {
+  display: inline-block;
+  position: absolute;
+  bottom: 6px;
+  height: 2px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+a.product-link span {
+  width: 0;
+  height: 100%;
+  background: #2c3e50;
+  margin: 0 auto;
+  display: block;
+  transition: all 0.3s;
+}
+
+a.product-link:hover span {
+  width: 100%;
 }
 
 h3.product-name {

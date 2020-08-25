@@ -33,9 +33,6 @@ export default {
     Loader,
   },
   computed: mapState(["failedToFetch", "loading"]),
-  created: function() {
-    this.$store.dispatch("getProducts");
-  },
 };
 </script>
 
