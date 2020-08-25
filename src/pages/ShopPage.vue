@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import Search from "./sections/Search.vue";
-import Products from "./sections/Products.vue";
-import Compare from "./sections/Compare.vue";
-import HelloWorld from "./HelloWorld.vue";
-import Error from "./shared/Error.vue";
-import Loader from "./shared/Loader.vue";
+import Search from "../components/sections/Search.vue";
+import Products from "../components/sections/Products.vue";
+import Compare from "../components/sections/Compare.vue";
+import HelloWorld from "../components/HelloWorld.vue";
+import Error from "../components/shared/Error.vue";
+import Loader from "../components/shared/Loader.vue";
 
 import { mapState } from "vuex";
 

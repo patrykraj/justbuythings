@@ -5,7 +5,7 @@ import VueRouter from "vue-router";
 import store from "./store";
 
 import App from "./App.vue";
-import SiteContainer from "./components/SiteContainer.vue";
+import ShopPage from "./pages/ShopPage.vue";
 import ProductPage from "./pages/ProductPage.vue";
 
 Vue.use(Vuex);
@@ -15,8 +15,13 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
-    { path: "/products/:id", name: "products", component: ProductPage },
-    { path: "/", name: "home", component: SiteContainer },
+    {
+      path: "/products/:id",
+      name: "products",
+      component: ProductPage,
+      props: true,
+    },
+    { path: "/", name: "home", component: ShopPage },
   ],
 });
 
