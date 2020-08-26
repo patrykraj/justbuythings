@@ -3,6 +3,7 @@
     <div class="product-page page">
       <NavBar />
       <div v-if="this.visibleProduct" class="product-container">
+        <router-link class="go-back" to="/">Go back to products</router-link>
         <div class="img-container big">
           <div class="img big"></div>
         </div>
@@ -100,17 +101,30 @@ export default {
   flex-flow: column;
   justify-content: space-between;
   align-items: space-between;
-  min-height: 80vh;
+  min-height: calc(100vh - 300px);
 }
 
 .product-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 70px;
+  margin-top: 90px;
 }
 
 .product-container > * {
   flex: 1;
+}
+
+.go-back {
+  position: absolute;
+  top: 100px;
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  transition: 0.2s all;
+}
+
+.go-back:hover {
+  text-decoration: underline;
+  color: rgb(0, 0, 0);
 }
 
 .product-brand {
@@ -221,6 +235,7 @@ export default {
 
   .product-info {
     margin: 2rem auto;
+    max-width: 527px;
   }
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="site-container page">
       <NavBar />
       <div class="content-wrapper">
-        <h1>SHOPTEMPLATE.COM</h1>
+        <h1 class="site-header">SHOPTEMPLATE.COM</h1>
         <Loader v-if="this.loading" />
         <Error v-else-if="this.failedToFetch" :err="this.failedToFetch" />
         <main v-else class="main">
@@ -44,25 +44,6 @@ export default {
 </script>
 
 <style>
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin: 60px auto 0;
-}
-
 section {
   margin: 2rem 0;
 }
@@ -75,12 +56,6 @@ section {
 
 .content-wrapper {
   margin-top: 80px;
-  min-height: 70vh;
-}
-
-@media (max-width: 400px) {
-  #app {
-    padding: 0 10px;
-  }
+  min-height: calc(100vh - 300px);
 }
 </style>

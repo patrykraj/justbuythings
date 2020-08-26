@@ -57,6 +57,7 @@ export default {
   margin: 0 auto;
   padding: 0 1rem;
   text-align: left;
+  letter-spacing: 1px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -89,6 +90,12 @@ export default {
 
 .contact-link:hover .material-design-icon__svg {
   transform: scale(1);
-  color: rgba(255, 255, 255, 1);
+  color: #42b883;
+}
+
+@media (max-width: 425px) {
+  .footer-container {
+    flex-flow: column-reverse;
+  }
 }
 </style>
