@@ -2,32 +2,33 @@
   <div>
     <div class="product-page page">
       <NavBar />
-      <div v-if="this.visibleProduct" class="product-container">
+      <Loader v-if="this.loading" />
+      <div v-else class="product-container">
         <router-link class="go-back" to="/">Go back to products</router-link>
         <div class="img-container big">
           <div class="img big"></div>
         </div>
         <div class="product-info">
-          <p class="product-brand">{{ this.visibleProduct.brand }}</p>
+          <p class="product-brand">{{ this.selectedProduct.brand }}</p>
           <h2 class="product-name">
-            {{ this.visibleProduct.name }}
+            {{ this.selectedProduct.name }}
             <span class="small-title">
               - model:
-              {{ this.visibleProduct.model }}
+              {{ this.selectedProduct.model }}
             </span>
-            {{ this.visibleProduct.special ? "*" : null }}
+            {{ this.selectedProduct.special ? "*" : null }}
           </h2>
           <p>
             ${{
               (
-                this.visibleProduct.price * 0.23 +
-                this.visibleProduct.price
+                this.selectedProduct.price * 0.23 +
+                this.selectedProduct.price
               ).toFixed(2)
             }}
             (incl. VAT)
           </p>
           <p>
-            Color: <strong>{{ this.visibleProduct.color }}</strong>
+            Color: <strong>{{ this.selectedProduct.color }}</strong>
           </p>
           <div class="buy-container">
             <Button class="buy-btn" txt="Add to basket" :special="true" />
@@ -42,7 +43,7 @@
                 :class="this.descReveal ? 'open' : null"
               >
                 <p v-if="this.descReveal">
-                  {{ this.visibleProduct.description }}
+                  {{ this.selectedProduct.description }}
                 </p>
               </div>
             </li>
@@ -60,6 +61,7 @@ import { mapState } from "vuex";
 import Button from "../components/shared/Button";
 import NavBar from "../components/navigation/NavBar";
 import Footer from "../components/shared/Footer";
+import Loader from "../components/shared/Loader.vue";
 
 export default {
   name: "ProductPage",
@@ -70,15 +72,15 @@ export default {
     Button,
     NavBar,
     Footer,
+    Loader,
   },
   data: function() {
     return {
-      visibleProduct: null,
       descReveal: false,
     };
   },
   computed: {
-    ...mapState(["products"]),
+    ...mapState(["selectedProduct", "loading"]),
   },
   methods: {
     setDescReveal() {
@@ -86,11 +88,7 @@ export default {
     },
   },
   created: function() {
-    this.products.map((product) => {
-      if (product.id === this.id) {
-        this.visibleProduct = product;
-      }
-    });
+    this.$store.dispatch("getProduct", { id: this.id });
   },
 };
 </script>
@@ -117,14 +115,14 @@ export default {
 .go-back {
   position: absolute;
   top: 100px;
-  color: rgba(0, 0, 0, 0.8);
+  color: #2c3e50;
   text-decoration: none;
   transition: 0.2s all;
 }
 
 .go-back:hover {
   text-decoration: underline;
-  color: rgb(0, 0, 0);
+  color: #0a1c38;
 }
 
 .product-brand {
