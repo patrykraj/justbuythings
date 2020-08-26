@@ -21,14 +21,16 @@ li {
 
 a.link {
   display: block;
-  color: rgba(255, 255, 255, 0.8);
-  margin: 0 20px;
+  color: white;
+  margin: 0 5px;
+  padding: 10px 15px;
+  border-radius: 10px;
   text-transform: capitalize;
   text-decoration: none;
   transition: all 0.2s;
 }
 
-a.link:hover {
-  color: white;
+nav a.router-link-exact-active {
+  background-color: #42b883;
 }
 </style>

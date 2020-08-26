@@ -31,7 +31,12 @@
             Color: <strong>{{ this.selectedProduct.color }}</strong>
           </p>
           <div class="buy-container">
-            <Button class="buy-btn" txt="Add to basket" :special="true" />
+            <Button
+              class="buy-btn"
+              txt="Add to basket"
+              :special="true"
+              :click="addToBasket"
+            />
           </div>
           <ul class="product-additional-list">
             <li>
@@ -50,6 +55,7 @@
           </ul>
         </div>
       </div>
+      <Error v-else err="Product not found." />
     </div>
     <Footer />
   </div>
@@ -62,6 +68,7 @@ import Button from "../components/shared/Button";
 import NavBar from "../components/navigation/NavBar";
 import Footer from "../components/shared/Footer";
 import Loader from "../components/shared/Loader.vue";
+import Error from "../components/shared/Error.vue";
 
 export default {
   name: "ProductPage",
@@ -73,6 +80,7 @@ export default {
     NavBar,
     Footer,
     Loader,
+    Error,
   },
   data: function() {
     return {
@@ -85,6 +93,9 @@ export default {
   methods: {
     setDescReveal() {
       this.descReveal = !this.descReveal;
+    },
+    addToBasket() {
+      this.basket = JSON.stringify(this.selectedProduct);
     },
   },
   created: function() {
@@ -99,7 +110,7 @@ export default {
   flex-flow: column;
   justify-content: space-between;
   align-items: space-between;
-  min-height: calc(100vh - 300px);
+  min-height: calc(100vh - 303px);
 }
 
 .product-container {

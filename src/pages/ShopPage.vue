@@ -68,7 +68,7 @@ section {
 
 .content-wrapper {
   margin-top: 80px;
-  min-height: calc(100vh - 300px);
+  min-height: calc(100vh - 303px);
 }
 
 @media (max-width: 600px) {

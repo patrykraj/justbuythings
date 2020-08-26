@@ -7,6 +7,7 @@ import store from "./store";
 import App from "./App.vue";
 import ShopPage from "./pages/ShopPage.vue";
 import ProductPage from "./pages/ProductPage.vue";
+import BasketPage from "./pages/BasketPage.vue";
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -22,6 +23,7 @@ const router = new VueRouter({
       props: true,
     },
     { path: "/", name: "home", component: ShopPage },
+    { path: "/basket", name: "basket", component: BasketPage },
   ],
 });
 
