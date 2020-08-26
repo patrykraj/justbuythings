@@ -22,7 +22,7 @@ li {
 a.link {
   display: block;
   color: rgba(255, 255, 255, 0.8);
-  margin: 0 10px;
+  margin: 0 20px;
   text-transform: capitalize;
   text-decoration: none;
   transition: all 0.2s;

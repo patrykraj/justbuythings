@@ -30,8 +30,8 @@ export default {
           name: "products",
         },
         {
-          to: "/contact",
-          name: "contact",
+          to: "/basket",
+          name: "basket",
         },
       ],
     };
@@ -39,7 +39,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .nav {
   height: 70px;
   background: #2c3e50;
@@ -69,5 +69,9 @@ export default {
   font-weight: bold;
   color: white;
   text-decoration: none;
+}
+
+.nav li:last-child a.link {
+  margin-right: 0;
 }
 </style>

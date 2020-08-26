@@ -1,52 +1,55 @@
 <template>
-  <div class="product-page">
-    <NavBar />
-    <div v-if="this.visibleProduct" class="product-container">
-      <div class="img-container big">
-        <div class="img big"></div>
-      </div>
-      <div class="product-info">
-        <p class="product-brand">{{ this.visibleProduct.brand }}</p>
-        <h2 class="product-name">
-          {{ this.visibleProduct.name }}
-          <span class="small-title">
-            - model:
-            {{ this.visibleProduct.model }}
-          </span>
-          {{ this.visibleProduct.special ? "*" : null }}
-        </h2>
-        <p>
-          ${{
-            (
-              this.visibleProduct.price * 0.23 +
-              this.visibleProduct.price
-            ).toFixed(2)
-          }}
-          (incl. VAT)
-        </p>
-        <p>
-          Color: <strong>{{ this.visibleProduct.color }}</strong>
-        </p>
-        <div class="buy-container">
-          <Button class="buy-btn" txt="Add to basket" :special="true" />
+  <div>
+    <div class="product-page page">
+      <NavBar />
+      <div v-if="this.visibleProduct" class="product-container">
+        <div class="img-container big">
+          <div class="img big"></div>
         </div>
-        <ul class="product-additional-list">
-          <li>
-            <button @click="this.setDescReveal">
-              <span>Description</span><span class="rotate">^</span>
-            </button>
-            <div
-              class="desc-container"
-              :class="this.descReveal ? 'open' : null"
-            >
-              <p v-if="this.descReveal">
-                {{ this.visibleProduct.description }}
-              </p>
-            </div>
-          </li>
-        </ul>
+        <div class="product-info">
+          <p class="product-brand">{{ this.visibleProduct.brand }}</p>
+          <h2 class="product-name">
+            {{ this.visibleProduct.name }}
+            <span class="small-title">
+              - model:
+              {{ this.visibleProduct.model }}
+            </span>
+            {{ this.visibleProduct.special ? "*" : null }}
+          </h2>
+          <p>
+            ${{
+              (
+                this.visibleProduct.price * 0.23 +
+                this.visibleProduct.price
+              ).toFixed(2)
+            }}
+            (incl. VAT)
+          </p>
+          <p>
+            Color: <strong>{{ this.visibleProduct.color }}</strong>
+          </p>
+          <div class="buy-container">
+            <Button class="buy-btn" txt="Add to basket" :special="true" />
+          </div>
+          <ul class="product-additional-list">
+            <li>
+              <button @click="this.setDescReveal">
+                <span>Description</span><span class="rotate">^</span>
+              </button>
+              <div
+                class="desc-container"
+                :class="this.descReveal ? 'open' : null"
+              >
+                <p v-if="this.descReveal">
+                  {{ this.visibleProduct.description }}
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -54,7 +57,8 @@
 import { mapState } from "vuex";
 
 import Button from "../components/shared/Button";
-import NavBar from "../components/navigation/NavBar.vue";
+import NavBar from "../components/navigation/NavBar";
+import Footer from "../components/shared/Footer";
 
 export default {
   name: "ProductPage",
@@ -64,6 +68,7 @@ export default {
   components: {
     Button,
     NavBar,
+    Footer,
   },
   data: function() {
     return {
@@ -95,7 +100,7 @@ export default {
   flex-flow: column;
   justify-content: space-between;
   align-items: space-between;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .product-container {
@@ -110,6 +115,8 @@ export default {
 
 .product-brand {
   margin-top: 0;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .product-additional-list {
@@ -197,5 +204,23 @@ export default {
 
 .buy-btn:hover::before {
   background: #64daa5;
+}
+
+@media (max-width: 768px) {
+  .product-container {
+    flex-flow: column;
+  }
+
+  .img-container {
+    margin-right: 0;
+  }
+
+  .img {
+    margin: 0 auto;
+  }
+
+  .product-info {
+    margin: 2rem auto;
+  }
 }
 </style>
