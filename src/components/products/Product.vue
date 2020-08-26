@@ -1,6 +1,6 @@
 <template>
   <li class="product-listed" :class="product.special ? 'special' : null">
-    <router-link :to="{ name: 'products', params: { id: product.id } }">
+    <router-link :to="{ name: 'product', params: { id: product.id } }">
       <div class="img-container">
         <div class="img"></div>
       </div>
@@ -8,7 +8,7 @@
     <div class="data-container">
       <router-link
         class="product-link"
-        :to="{ name: 'products', params: { id: product.id } }"
+        :to="{ name: 'product', params: { id: product.id } }"
         ><h3 class="product-name">{{ product.name }}</h3>
         <div>
           <span></span>

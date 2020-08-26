@@ -3,7 +3,7 @@
     <div class="product-page page">
       <NavBar />
       <Loader v-if="this.loading" />
-      <div v-else class="product-container">
+      <div v-else-if="this.selectedProduct" class="product-container">
         <router-link class="go-back" to="/">Go back to products</router-link>
         <div class="img-container big">
           <div class="img big"></div>
@@ -66,7 +66,7 @@ import Loader from "../components/shared/Loader.vue";
 export default {
   name: "ProductPage",
   props: {
-    id: Number,
+    id: [Number, String],
   },
   components: {
     Button,

@@ -16,8 +16,8 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/products/:id",
-      name: "products",
+      path: "/product/:id",
+      name: "product",
       component: ProductPage,
       props: true,
     },

@@ -234,6 +234,7 @@ input.search-input {
 
 select.select-input {
   width: 150px;
+  padding-left: 7px;
   border: 2px solid #2c3e50;
 }
 
