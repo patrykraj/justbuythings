@@ -10,7 +10,9 @@
         <span>{{ product.model }}</span>
       </h3>
       <p>Color: {{ product.color }}</p>
-      <button class="delete">Delete from basket</button>
+      <button class="delete" @click="handleRemoveFromProps(product.id)">
+        Remove from basket
+      </button>
     </div>
     <div class="product-summary">
       <select>
@@ -30,6 +32,11 @@ export default {
   name: "BasketProduct",
   props: {
     product: Object,
+  },
+  methods: {
+    handleRemoveFromProps(id) {
+      this.$emit("handleRemove", id);
+    },
   },
 };
 </script>

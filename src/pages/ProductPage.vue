@@ -35,7 +35,7 @@
               class="buy-btn"
               txt="Add to basket"
               :special="true"
-              @clicked="addToBasket"
+              @clicked="handleAddToBasket"
             />
           </div>
           <ul class="product-additional-list">
@@ -91,27 +91,12 @@ export default {
     ...mapState(["selectedProduct", "basketProducts", "loading"]),
   },
   methods: {
-    ...mapMutations(["mutateBasket"]),
+    ...mapMutations(["addToBasket"]),
     setDescReveal() {
       this.descReveal = !this.descReveal;
     },
-    addToBasket() {
-      const items = JSON.parse(localStorage.getItem("basket")) || [
-        this.selectedProduct,
-      ];
-
-      let productValid = true;
-
-      if (JSON.parse(localStorage.getItem("basket"))) {
-        JSON.parse(localStorage.getItem("basket")).map((product) => {
-          if (product.id === this.selectedProduct.id) productValid = false;
-        });
-      }
-
-      if (productValid) {
-        items.push(this.selectedProduct);
-        localStorage.setItem("basket", JSON.stringify(items));
-      }
+    handleAddToBasket() {
+      this.addToBasket(this.selectedProduct);
     },
   },
   created: function() {

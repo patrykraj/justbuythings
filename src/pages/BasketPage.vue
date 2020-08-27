@@ -11,6 +11,7 @@
             v-for="product in basketProducts"
             :key="product.id"
             :product="product"
+            @handleRemove="handleRemoveFromBasket"
           />
         </ul>
         <div class="basket-summary">
@@ -31,7 +32,7 @@ import Footer from "../components/shared/Footer";
 import BasketProduct from "../components/basket/BasketProduct";
 import Button from "../components/shared/Button";
 
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "SiteContainer",
@@ -43,6 +44,12 @@ export default {
   },
   computed: {
     ...mapState(["basketProducts"]),
+  },
+  methods: {
+    ...mapMutations(["removeFromBasket"]),
+    handleRemoveFromBasket(id) {
+      this.removeFromBasket(id);
+    },
   },
 };
 </script>

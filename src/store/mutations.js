@@ -7,6 +7,26 @@ const mutations = {
     }
   },
 
+  addToBasket({ basketProducts }, selectedProduct) {
+    let valid = true;
+
+    basketProducts.map((basketProduct) => {
+      if (basketProduct.id === selectedProduct.id) valid = false;
+    });
+
+    if (valid) {
+      basketProducts.push(selectedProduct);
+      localStorage.setItem("basket", JSON.stringify(basketProducts));
+    }
+  },
+
+  removeFromBasket({ basketProducts }, id) {
+    const newBasket = basketProducts.filter((product) => product.id !== id);
+
+    this.state.basketProducts = newBasket;
+    localStorage.setItem("basket", JSON.stringify(newBasket));
+  },
+
   setVisibleProperties({ visibleProperties }, { from, to }) {
     this.state.visibleProperties = {
       from,
