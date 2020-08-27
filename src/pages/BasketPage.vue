@@ -4,7 +4,9 @@
       <NavBar />
       <div class="basket">
         <ul class="basket-items">
-          <li><h2>Basket</h2></li>
+          <li class="section-header">
+            <h2>Basket ({{ basketProducts.length }} items)</h2>
+          </li>
           <BasketProduct
             v-for="product in basketProducts"
             :key="product.id"
@@ -15,7 +17,7 @@
           <h2>Total price</h2>
           <p><span>Total</span><span>$50.00</span></p>
           <p><span>Delivery</span><span>Free</span></p>
-          <Button txt="Process to payment" />
+          <Button :payment="true" txt="Process to payment" />
         </div>
       </div>
     </div>
@@ -51,6 +53,8 @@ export default {
 }
 
 .basket {
+  max-width: 1024px;
+  margin: 0 auto;
   margin-top: 90px;
   display: flex;
   align-items: baseline;
@@ -58,11 +62,21 @@ export default {
   padding: 0 1rem;
 }
 
+.section-header {
+  padding: 1rem;
+  background: whitesmoke;
+  margin-bottom: -5px;
+}
+
+.section-header h2 {
+  margin: 0;
+  margin-bottom: -5px;
+}
+
 .basket-items {
   margin: 0;
   padding: 0;
   flex: 3;
-  background: whitesmoke;
   text-align: left;
   list-style: none;
   margin-right: 1rem;
@@ -70,10 +84,17 @@ export default {
 
 .basket-summary {
   background: whitesmoke;
+  flex: 1;
   margin-left: 1rem;
+  padding: 1rem;
 }
 
-.basket-summary {
-  flex: 1;
+.basket-summary h2 {
+  margin-top: 0;
+}
+
+.basket-summary p {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

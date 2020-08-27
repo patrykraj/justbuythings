@@ -35,7 +35,7 @@
               class="buy-btn"
               txt="Add to basket"
               :special="true"
-              :click="addToBasket"
+              @clicked="addToBasket"
             />
           </div>
           <ul class="product-additional-list">
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 import Button from "../components/shared/Button";
 import NavBar from "../components/navigation/NavBar";
@@ -88,14 +88,30 @@ export default {
     };
   },
   computed: {
-    ...mapState(["selectedProduct", "loading"]),
+    ...mapState(["selectedProduct", "basketProducts", "loading"]),
   },
   methods: {
+    ...mapMutations(["mutateBasket"]),
     setDescReveal() {
       this.descReveal = !this.descReveal;
     },
     addToBasket() {
-      this.basket = JSON.stringify(this.selectedProduct);
+      const items = JSON.parse(localStorage.getItem("basket")) || [
+        this.selectedProduct,
+      ];
+
+      let productValid = true;
+
+      if (JSON.parse(localStorage.getItem("basket"))) {
+        JSON.parse(localStorage.getItem("basket")).map((product) => {
+          if (product.id === this.selectedProduct.id) productValid = false;
+        });
+      }
+
+      if (productValid) {
+        items.push(this.selectedProduct);
+        localStorage.setItem("basket", JSON.stringify(items));
+      }
     },
   },
   created: function() {

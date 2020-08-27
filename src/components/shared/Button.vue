@@ -1,6 +1,6 @@
 <template>
   <button
-    :class="special ? 'special-btn' : null"
+    :class="special ? 'special-btn' : payment ? 'payment' : null"
     @click="executePropsFunction"
     :disabled="disabled"
   >
@@ -15,6 +15,7 @@ export default {
     txt: String,
     special: Boolean,
     disabled: Boolean,
+    payment: Boolean,
   },
   methods: {
     executePropsFunction() {
@@ -53,6 +54,17 @@ button:disabled:hover {
 
 button.special-btn {
   color: rgb(245, 245, 245);
+}
+
+button.payment {
+  width: 100%;
+  background: white;
+  color: #2c3e50;
+}
+
+button.payment:hover {
+  background: #2c3e50;
+  color: white;
 }
 
 button.special-btn:hover {

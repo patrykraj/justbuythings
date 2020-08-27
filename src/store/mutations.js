@@ -1,4 +1,12 @@
 const mutations = {
+  initialiseStore(state) {
+    if (localStorage.getItem("basket")) {
+      const objects = JSON.parse(localStorage.getItem("basket"));
+
+      state.basketProducts = objects;
+    }
+  },
+
   setVisibleProperties({ visibleProperties }, { from, to }) {
     this.state.visibleProperties = {
       from,

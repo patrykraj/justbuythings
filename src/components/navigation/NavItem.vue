@@ -1,15 +1,23 @@
 <template>
   <li>
-    <router-link class="link" :to="to">{{ name }}</router-link>
+    <router-link class="link" :to="to"
+      >{{ name }}
+      {{ name === "basket" ? `(${basketProducts.length})` : null }}</router-link
+    >
   </li>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "NavList",
   props: {
     name: String,
     to: String,
+  },
+  computed: {
+    ...mapState(["basketProducts"]),
   },
 };
 </script>
