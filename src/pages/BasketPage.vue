@@ -2,7 +2,8 @@
   <div>
     <div class="basket-container">
       <NavBar />
-      <div class="basket">
+      <BasketEmpty v-if="!basketProducts.length" />
+      <div v-else class="basket">
         <ul class="basket-items">
           <li class="section-header">
             <h2>Basket ({{ basketProducts.length }} items)</h2>
@@ -26,6 +27,7 @@ import NavBar from "../components/navigation/NavBar.vue";
 import Footer from "../components/shared/Footer";
 import BasketProduct from "../components/basket/BasketProduct";
 import BasketSummary from "../components/basket/BasketSummary";
+import BasketEmpty from "../components/basket/BasketEmpty";
 
 import { mapState, mapMutations } from "vuex";
 
@@ -36,6 +38,7 @@ export default {
     Footer,
     BasketProduct,
     BasketSummary,
+    BasketEmpty,
   },
   computed: {
     ...mapState(["basketProducts"]),
