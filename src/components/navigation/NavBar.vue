@@ -1,7 +1,8 @@
 <template>
   <nav class="nav">
     <router-link class="logo" to="/">
-      <Shopping />
+      <Store />
+      <span class="logo-caption">Home</span>
     </router-link>
     <ul class="top-bar">
       <NavItem
@@ -15,14 +16,14 @@
 </template>
 
 <script>
-import Shopping from "vue-material-design-icons/Shopping.vue";
 import NavItem from "./NavItem";
+import Store from "vue-material-design-icons/Store.vue";
 
 export default {
   name: "NavBar",
   components: {
     NavItem,
-    Shopping,
+    Store,
   },
   data: function() {
     return {
@@ -62,15 +63,25 @@ export default {
 
 .logo {
   background: #42b883;
-  width: 80px;
-  height: 45px;
+  padding: 5px 25px;
   border-radius: 15px;
   display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   color: white;
   text-decoration: none;
+}
+
+.logo span {
+  display: flex;
+  align-items: center;
+}
+
+.logo-caption {
+  font-size: 0.8rem;
+  font-weight: 300;
 }
 
 .nav li:last-child a.link {
@@ -81,6 +92,15 @@ export default {
   .nav {
     position: fixed;
     z-index: 100;
+  }
+
+  span.logo-caption {
+    display: none;
+  }
+
+  .logo {
+    background: #42b883;
+    padding: 10px 25px;
   }
 }
 </style>
