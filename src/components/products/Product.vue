@@ -176,8 +176,7 @@ div.price-container {
     flex-direction: column;
     flex: 1 0 0;
     align-items: center;
-    max-width: 40%;
-    min-width: 200px;
+    min-width: 190px;
     text-align: center;
     border: none;
   }
@@ -187,7 +186,7 @@ div.price-container {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 400px) {
   li.product-listed {
     max-width: 60%;
     min-width: 250px;

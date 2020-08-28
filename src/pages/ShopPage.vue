@@ -55,7 +55,7 @@ section {
 }
 
 .site-header {
-  margin-top: 9rem;
+  margin-top: 7rem;
   margin-bottom: 4rem;
   width: 90%;
 }
@@ -74,7 +74,7 @@ section {
 @media (max-width: 600px) {
   .site-header {
     width: 100%;
-    margin-top: 7rem;
+    margin-top: 5rem;
     margin-bottom: 2rem;
   }
 }

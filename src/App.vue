@@ -34,8 +34,5 @@ body {
 }
 
 @media (max-width: 400px) {
-  #app {
-    padding: 0 10px;
-  }
 }
 </style>

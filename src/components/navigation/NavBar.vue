@@ -76,4 +76,11 @@ export default {
 .nav li:last-child a.link {
   margin-right: 0;
 }
+
+@media (max-width: 600px) {
+  .nav {
+    position: fixed;
+    z-index: 100;
+  }
+}
 </style>

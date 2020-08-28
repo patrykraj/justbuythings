@@ -1,6 +1,6 @@
 <template>
   <div class="sort-container">
-    <span>Sort price</span>
+    <span>Price</span>
     <button
       :class="this.sorting === 'descending' ? 'active' : null"
       @click="sortList('descending')"

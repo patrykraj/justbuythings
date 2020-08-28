@@ -1,6 +1,13 @@
 <template>
-  <div class="section-header-wrapper">
-    <h2 @click="setFiltersActive">{{ title }}</h2>
+  <div
+    :class="sorting ? 'section-header-wrapper sort' : 'section-header-wrapper'"
+  >
+    <h2
+      :class="showFilter ? 'filter-btn' : null"
+      @click="handleSetFiltersActive"
+    >
+      {{ title }}
+    </h2>
     <FilterButton
       v-if="showFilter"
       :filtersActive="filtersActive"
@@ -27,6 +34,11 @@ export default {
     Sort,
     FilterButton,
   },
+  methods: {
+    handleSetFiltersActive() {
+      this.setFiltersActive();
+    },
+  },
 };
 </script>
 
@@ -42,11 +54,14 @@ h2 {
   text-align: left;
   font-size: 2rem;
   margin: 10px 0;
+}
+
+h2.filter-btn {
   cursor: pointer;
 }
 
 @media (max-width: 500px) {
-  div.section-header-wrapper {
+  div.section-header-wrapper.sort {
     flex-flow: column;
   }
 }

@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     setFiltersActive() {
-      console.log("weszlo");
       this.filtersActive = !this.filtersActive;
     },
   },
