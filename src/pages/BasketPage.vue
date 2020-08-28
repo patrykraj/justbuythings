@@ -14,12 +14,7 @@
             @handleRemove="handleRemoveFromBasket"
           />
         </ul>
-        <div class="basket-summary">
-          <h2>Total price</h2>
-          <p><span>Total</span><span>$50.00</span></p>
-          <p><span>Delivery</span><span>Free</span></p>
-          <Button :payment="true" txt="Process to payment" />
-        </div>
+        <BasketSummary />
       </div>
     </div>
     <Footer />
@@ -30,17 +25,17 @@
 import NavBar from "../components/navigation/NavBar.vue";
 import Footer from "../components/shared/Footer";
 import BasketProduct from "../components/basket/BasketProduct";
-import Button from "../components/shared/Button";
+import BasketSummary from "../components/basket/BasketSummary";
 
 import { mapState, mapMutations } from "vuex";
 
 export default {
-  name: "SiteContainer",
+  name: "BasketPage",
   components: {
     NavBar,
     Footer,
     BasketProduct,
-    Button,
+    BasketSummary,
   },
   computed: {
     ...mapState(["basketProducts"]),
@@ -89,19 +84,13 @@ export default {
   margin-right: 1rem;
 }
 
-.basket-summary {
-  background: whitesmoke;
-  flex: 1;
-  margin-left: 1rem;
-  padding: 1rem;
-}
+@media (max-width: 700px) {
+  .basket {
+    flex-flow: column;
+  }
 
-.basket-summary h2 {
-  margin-top: 0;
-}
-
-.basket-summary p {
-  display: flex;
-  justify-content: space-between;
+  .basket-items {
+    width: 100%;
+  }
 }
 </style>

@@ -1,41 +1,71 @@
 <template>
   <li class="basket-product">
     <div class="product-image">
-      <div></div>
+      <router-link :to="{ name: 'product', params: { id: product.id } }">
+        <div></div>
+      </router-link>
     </div>
     <div class="product-info">
       <p>{{ product.brand }}</p>
-      <h3>
-        <span class="uppercase">{{ product.name }}</span> -
-        <span>{{ product.model }}</span>
-      </h3>
+      <router-link :to="{ name: 'product', params: { id: product.id } }"
+        ><h3>
+          <span class="uppercase">{{ product.name }}</span> -
+          <span>{{ product.model }}</span>
+        </h3></router-link
+      >
       <p>Color: {{ product.color }}</p>
       <button class="delete" @click="handleRemoveFromProps(product.id)">
         Remove from basket
       </button>
     </div>
     <div class="product-summary">
-      <select>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+      <select v-on:change="handleSetQuantity($event, product.id)">
+        <option
+          v-for="index in 10"
+          :key="index"
+          :value="index"
+          :selected="product.quantity ? product.quantity === index : false"
+          >{{ index }}</option
+        >
       </select>
-      <h4>${{ (product.price * 0.23 + product.price).toFixed(2) }}</h4>
+      <h4>${{ this.getPrice }}</h4>
     </div>
   </li>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   name: "BasketProduct",
   props: {
     product: Object,
   },
+  computed: {
+    getPrice() {
+      const result =
+        (this.product.price * 0.23 + this.product.price) *
+        this.product.quantity;
+
+      return result.toFixed(2);
+    },
+  },
   methods: {
+    ...mapMutations(["setProductQuantity"]),
+
     handleRemoveFromProps(id) {
       this.$emit("handleRemove", id);
+    },
+    handleSetQuantity(e, id) {
+      let val = Number(e.target.value);
+
+      if (val && val <= 10 && typeof val === "number" && !isNaN(val)) {
+        val = Math.floor(val);
+      } else {
+        val = 1;
+      }
+
+      this.setProductQuantity({ quantity: val, id });
     },
   },
 };
@@ -66,6 +96,11 @@ li + li {
   padding: 0 1rem;
   flex-grow: 1;
   font-size: 0.8rem;
+}
+
+.product-info a {
+  color: #2c3e50;
+  text-decoration: none;
 }
 
 .product-info p,

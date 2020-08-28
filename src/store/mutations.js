@@ -15,6 +15,10 @@ const mutations = {
     });
 
     if (valid) {
+      selectedProduct = {
+        ...selectedProduct,
+        quantity: 1,
+      };
       basketProducts.push(selectedProduct);
       localStorage.setItem("basket", JSON.stringify(basketProducts));
     }
@@ -25,6 +29,17 @@ const mutations = {
 
     this.state.basketProducts = newBasket;
     localStorage.setItem("basket", JSON.stringify(newBasket));
+  },
+
+  setProductQuantity({ basketProducts }, { id, quantity }) {
+    const newBasket = basketProducts.map((product) => {
+      if (product.id === id) {
+        product.quantity = quantity;
+      }
+      return product;
+    });
+
+    this.state.basketProducts = newBasket;
   },
 
   setVisibleProperties({ visibleProperties }, { from, to }) {
@@ -58,7 +73,6 @@ const mutations = {
 
       this.state.comparedProducts.map((product) => {
         if (product.id === item.id) {
-          console.log("product already in the list");
           itemValid = false;
         }
       });
