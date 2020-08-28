@@ -1,7 +1,7 @@
 <template>
   <nav class="nav">
     <router-link class="logo" to="/">
-      LOGO
+      <Shopping />
     </router-link>
     <ul class="top-bar">
       <NavItem
@@ -15,12 +15,14 @@
 </template>
 
 <script>
+import Shopping from "vue-material-design-icons/Shopping.vue";
 import NavItem from "./NavItem";
 
 export default {
   name: "NavBar",
   components: {
     NavItem,
+    Shopping,
   },
   data: function() {
     return {

@@ -1,7 +1,12 @@
 <template>
   <section class="search">
-    <SectionHeader title="Search" />
-    <Form />
+    <SectionHeader
+      title="Filters"
+      :showFilter="true"
+      :filtersActive="filtersActive"
+      :setFiltersActive="setFiltersActive"
+    />
+    <Form v-if="this.filtersActive" />
   </section>
 </template>
 
@@ -14,6 +19,17 @@ export default {
   components: {
     SectionHeader,
     Form,
+  },
+  data: function() {
+    return {
+      filtersActive: true,
+    };
+  },
+  methods: {
+    setFiltersActive() {
+      console.log("weszlo");
+      this.filtersActive = !this.filtersActive;
+    },
   },
 };
 </script>

@@ -25,6 +25,8 @@ export default {
 <style scoped>
 li {
   color: white;
+  display: flex;
+  align-items: center;
 }
 
 a.link {
