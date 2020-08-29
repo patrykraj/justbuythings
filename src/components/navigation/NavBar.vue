@@ -63,7 +63,8 @@ export default {
 
 .logo {
   background: #42b883;
-  padding: 5px 25px;
+  height: 50px;
+  width: 80px;
   border-radius: 15px;
   display: flex;
   flex-flow: column;
@@ -100,7 +101,8 @@ export default {
 
   .logo {
     background: #42b883;
-    padding: 10px 25px;
+    height: 40px;
+    width: 70px;
   }
 }
 </style>

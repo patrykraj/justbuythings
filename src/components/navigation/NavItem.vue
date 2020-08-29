@@ -46,9 +46,11 @@ li {
 a.link {
   display: flex;
   flex-flow: column;
+  justify-content: center;
   color: white;
   margin: 0 5px;
-  padding: 5px 15px;
+  height: 50px;
+  width: 80px;
   border-radius: 10px;
   text-transform: capitalize;
   text-decoration: none;
@@ -72,6 +74,12 @@ nav a.router-link-exact-active {
 @media (max-width: 600px) {
   a.link {
     padding: 5px 20px;
+    height: 40px;
+    width: 70px;
+  }
+
+  .link-caption {
+    margin-top: 0;
   }
 
   span.name {
