@@ -24,7 +24,7 @@ import Compare from "../components/sections/Compare.vue";
 import Error from "../components/shared/Error.vue";
 import Loader from "../components/shared/Loader.vue";
 import NavBar from "../components/navigation/NavBar.vue";
-import Footer from "../components/shared/Footer";
+import Footer from "../components/sections/Footer";
 import SiteHeader from "../assets/siteheader.png";
 
 import { mapState } from "vuex";

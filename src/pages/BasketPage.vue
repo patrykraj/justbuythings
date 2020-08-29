@@ -24,7 +24,7 @@
 
 <script>
 import NavBar from "../components/navigation/NavBar.vue";
-import Footer from "../components/shared/Footer";
+import Footer from "../components/sections/Footer";
 import BasketProduct from "../components/basket/BasketProduct";
 import BasketSummary from "../components/basket/BasketSummary";
 import BasketEmpty from "../components/basket/BasketEmpty";

@@ -125,9 +125,11 @@ export default {
         }
       });
     });
+
+    this.resetFilters();
   },
   methods: {
-    ...mapMutations(["handleFilterProducts"]),
+    ...mapMutations(["handleFilterProducts", "resetFilters"]),
     handleSubmitSearch(e) {
       e.preventDefault();
 
@@ -167,6 +169,11 @@ export default {
 </script>
 
 <style scoped>
+.filter-form {
+  transition: 0.3s all;
+  overflow: hidden;
+}
+
 div.row {
   display: flex;
   justify-content: space-between;

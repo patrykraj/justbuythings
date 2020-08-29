@@ -47,7 +47,7 @@
                 class="desc-container"
                 :class="this.descReveal ? 'open' : null"
               >
-                <p v-if="this.descReveal">
+                <p>
                   {{ this.selectedProduct.description }}
                 </p>
               </div>
@@ -66,7 +66,7 @@ import { mapState, mapMutations } from "vuex";
 
 import Button from "../components/shared/Button";
 import NavBar from "../components/navigation/NavBar";
-import Footer from "../components/shared/Footer";
+import Footer from "../components/sections/Footer";
 import Loader from "../components/shared/Loader.vue";
 import Error from "../components/shared/Error.vue";
 

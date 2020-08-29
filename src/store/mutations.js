@@ -42,64 +42,54 @@ const mutations = {
     this.state.basketProducts = newBasket;
   },
 
-  setVisibleProperties({ visibleProperties }, { from, to }) {
-    this.state.visibleProperties = {
+  setVisibleProperties(state, { from, to }) {
+    state.visibleProperties = {
       from,
       to,
     };
-
-    return visibleProperties;
   },
 
-  sortList({ products }, val) {
-    const activeList = this.state.filteredProducts.length
-      ? this.state.filteredProducts
-      : this.state.products;
+  sortList(state, val) {
+    const activeList = state.filteredProducts.length
+      ? state.filteredProducts
+      : state.products;
 
     if (val === "ascending") {
       activeList.sort((a, b) => (a.price > b.price ? 1 : -1));
-      this.state.sorting = val;
+      state.sorting = val;
     } else {
       activeList.sort((a, b) => (a.price > b.price ? -1 : 1));
-      this.state.sorting = val;
+      state.sorting = val;
     }
-
-    return products;
   },
 
-  addToCompared({ comparedProducts }, item) {
-    if (this.state.comparedProducts.length < 3) {
+  addToCompared(state, item) {
+    if (state.comparedProducts.length < 3) {
       let itemValid = true;
 
-      this.state.comparedProducts.map((product) => {
+      state.comparedProducts.map((product) => {
         if (product.id === item.id) {
           itemValid = false;
         }
       });
 
-      if (itemValid) this.state.comparedProducts.push(item);
+      if (itemValid) state.comparedProducts.push(item);
     }
-
-    return comparedProducts;
   },
 
-  removeFromCompared({ comparedProducts }, id) {
-    const newList = this.state.comparedProducts.filter(
+  removeFromCompared(state, id) {
+    const newList = state.comparedProducts.filter(
       (product) => product.id !== id
     );
 
-    this.state.comparedProducts = newList;
-
-    return comparedProducts;
+    state.comparedProducts = newList;
   },
 
-  setPage({ selectedPage }, page) {
-    this.state.selectedPage = page;
-
-    return selectedPage;
+  setPage(state, page) {
+    state.selectedPage = page;
   },
 
-  handleFilterProducts({ filterProperties }, { key, val, type }) {
+  handleFilterProducts(state, { key, val, type }) {
     switch (type) {
       case "SEARCH":
         this.state.filterProperties = {
@@ -135,7 +125,7 @@ const mutations = {
         break;
 
       default:
-        console.log(filterProperties);
+        this.$store.resetFilters();
     }
 
     this.state.filterActive = false;
@@ -210,14 +200,32 @@ const mutations = {
       if (productIsValid) newList.push(product);
     });
 
-    this.state.visibleProperties = {
+    state.visibleProperties = {
       from: 0,
       to: this.state.itemsPerPage,
     };
 
-    this.state.selectedPage = 0;
+    state.selectedPage = 0;
 
-    this.state.filteredProducts = newList;
+    state.filteredProducts = newList;
+  },
+
+  resetFilters() {
+    const initialFilters = {
+      name: "",
+      brand: "",
+      colors: [],
+      price: {
+        from: null,
+        to: null,
+      },
+    };
+
+    const filterActive = false;
+
+    this.state.filterProperties = initialFilters;
+    this.state.filterActive = filterActive;
+    this.state.filteredProducts = [];
   },
 };
 

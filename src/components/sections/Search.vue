@@ -6,7 +6,7 @@
       :filtersActive="filtersActive"
       :setFiltersActive="setFiltersActive"
     />
-    <Form v-if="this.filtersActive" />
+    <Form :class="filtersActive ? 'show' : 'hide'" />
   </section>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   },
   data: function() {
     return {
-      filtersActive: true,
+      filtersActive: false,
     };
   },
   methods: {
@@ -33,4 +33,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.hide {
+  max-height: 0px;
+}
+
+.show {
+  max-height: 500px;
+}
+</style>

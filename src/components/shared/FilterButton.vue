@@ -19,6 +19,8 @@ button {
   background: transparent;
   border: none;
   cursor: pointer;
+  flex-grow: 1;
+  text-align: right;
 }
 
 button:focus {
