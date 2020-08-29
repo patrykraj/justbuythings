@@ -87,10 +87,7 @@ import Button from "./shared/Button.vue";
 import { mapState, mapMutations } from "vuex";
 
 export default {
-  name: "Search",
-  props: {
-    msg: String,
-  },
+  name: "Form",
   components: {
     Button,
   },
@@ -240,6 +237,7 @@ input.search-input {
 }
 
 select.select-input {
+  height: 39px;
   width: 150px;
   padding-left: 7px;
   border: 2px solid #2c3e50;
