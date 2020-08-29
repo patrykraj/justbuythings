@@ -5,11 +5,22 @@
       :special="product.special"
       @clicked="removeFromCompared(product.id)"
     />
-    <div class="img-container">
-      <div class="img"></div>
-    </div>
+    <router-link :to="{ name: 'product', params: { id: product.id } }">
+      <div class="img-container">
+        <img
+          class="product-image"
+          v-bind:src="product.img"
+          :alt="product.name"
+        />
+      </div>
+    </router-link>
     <div class="data-container">
-      <h3>{{ product.name }}</h3>
+      <router-link
+        class="link"
+        :to="{ name: 'product', params: { id: product.id } }"
+      >
+        <h3>{{ product.name }}</h3>
+      </router-link>
       <p>Model: {{ product.model }}</p>
       <p>Brand: {{ product.brand }}</p>
     </div>
@@ -59,15 +70,15 @@ li:last-child {
   margin-right: 0;
 }
 
-div.img {
-  width: 190px;
-  height: 190px;
+.img-container {
+  max-width: 309px;
+  max-height: 309px;
   margin: 1rem auto;
 }
 
-div.img::before,
-div.img::after {
-  height: 269px;
+.data-container a.link {
+  text-decoration: none;
+  color: inherit;
 }
 
 div.price-container {

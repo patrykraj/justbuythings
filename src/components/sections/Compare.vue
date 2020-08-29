@@ -53,4 +53,10 @@ ul {
     margin: 1rem 0;
   }
 }
+
+@media (max-width: 400px) {
+  li {
+    min-width: 200px;
+  }
+}
 </style>

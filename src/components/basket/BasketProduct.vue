@@ -1,8 +1,12 @@
 <template>
   <li class="basket-product">
-    <div class="product-image">
+    <div class="product-image-container">
       <router-link :to="{ name: 'product', params: { id: product.id } }">
-        <div></div>
+        <img
+          class="product-image"
+          v-bind:src="product.img"
+          :alt="product.name"
+        />
       </router-link>
     </div>
     <div class="product-info">
@@ -82,9 +86,9 @@ li + li {
   background: whitesmoke;
 }
 
-.product-image div {
-  width: 75px;
-  height: 150px;
+.product-image {
+  width: 100px;
+  height: 100%;
   background: white;
 }
 

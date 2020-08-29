@@ -33,6 +33,15 @@ body {
   margin: 60px auto 0;
 }
 
+@media (max-width: 600px) {
+  :root {
+    font-size: 15px;
+  }
+}
+
 @media (max-width: 400px) {
+  :root {
+    font-size: 14px;
+  }
 }
 </style>

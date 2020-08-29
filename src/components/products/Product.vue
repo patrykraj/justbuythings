@@ -2,7 +2,11 @@
   <li class="product-listed" :class="product.special ? 'special' : null">
     <router-link :to="{ name: 'product', params: { id: product.id } }">
       <div class="img-container">
-        <img :src="product.img" :alt="product.name" />
+        <img
+          class="product-image"
+          v-bind:src="product.img"
+          :alt="product.name"
+        />
       </div>
     </router-link>
     <div class="data-container">
@@ -75,7 +79,7 @@ li.product-listed {
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid #2c3e50;
-  padding: 2rem 0;
+  padding: 2rem 0 2rem 10px;
   text-align: left;
 }
 
@@ -83,36 +87,15 @@ li.product-listed:last-child {
   border-bottom: none;
 }
 
-div.img {
-  width: 150px;
-  height: 150px;
-  border: 2px solid #2c3e50;
+.img-container {
+  max-width: 150px;
+  max-height: 150px;
   position: relative;
   overflow: hidden;
-  background: white;
 }
 
-div.img::before,
-div.img::after {
-  content: "";
-  width: 2px;
-  height: 212px;
-  display: block;
-  background: #2c3e50;
-  transform: rotate(-45deg);
-  position: absolute;
-}
-
-div.img::before {
-  transform: rotate(45deg);
-  transform-origin: top right;
-  right: -2px;
-  top: 0;
-}
-
-div.img::after {
-  transform-origin: top left;
-  left: -2px;
+.product-image {
+  width: 100%;
 }
 
 div.data-container {

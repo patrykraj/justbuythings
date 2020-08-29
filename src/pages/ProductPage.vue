@@ -6,7 +6,11 @@
       <div v-else-if="this.selectedProduct" class="product-container">
         <router-link class="go-back" to="/">Go back to products</router-link>
         <div class="img-container big">
-          <div class="img big"></div>
+          <img
+            class="product-image"
+            v-bind:src="this.selectedProduct.img"
+            :alt="this.selectedProduct.name"
+          />
         </div>
         <div class="product-info">
           <p class="product-brand">{{ this.selectedProduct.brand }}</p>
@@ -190,17 +194,9 @@ export default {
 }
 
 .img-container {
+  max-width: 100%;
+  max-height: 100%;
   margin-right: 1rem;
-}
-
-.img {
-  height: 400px;
-  width: 400px;
-}
-
-.img::before,
-.img::after {
-  height: 566px;
 }
 
 .product-info {

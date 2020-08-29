@@ -9,7 +9,7 @@
       "color": "cyan",
       "id": 20,
       "special": true,
-      "img": "https://images.unsplash.com/photo-1575325343284-b485bff5230e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=715&q=80"
+      "img": "https://images.unsplash.com/photo-1575325343284-b485bff5230e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=40"
     },
     {
       "name": "Id ullamco id duis",
@@ -20,7 +20,7 @@
       "color": "red",
       "id": 12,
       "special": false,
-      "img": "https://images.unsplash.com/photo-1587653914557-98f6c6f9577c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
+      "img": "https://images.unsplash.com/photo-1587653914557-98f6c6f9577c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=40"
     },
     {
       "name": "Exercitation voluptate pariatur",
@@ -31,7 +31,7 @@
       "color": "red",
       "id": 4,
       "special": false,
-      "img": "https://images.unsplash.com/photo-1594047820492-fed4bcfbbdd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
+      "img": "https://images.unsplash.com/photo-1594047820492-fed4bcfbbdd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=40"
     },
     {
       "name": "Exercitation voluptate pariatur",
@@ -42,7 +42,7 @@
       "color": "cyan",
       "id": 456,
       "special": false,
-      "img": "https://images.unsplash.com/photo-1593010997571-7ebe6c593d8e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
+      "img": "https://images.unsplash.com/photo-1593010997571-7ebe6c593d8e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=40"
     },
     {
       "name": "My custom product",
@@ -53,7 +53,7 @@
       "color": "black",
       "id": 15,
       "special": false,
-      "img": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
+      "img": "https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=40"
     },
     {
       "name": "Incididunt ex quis",
@@ -64,7 +64,7 @@
       "color": "black",
       "id": 98,
       "special": true,
-      "img": "https://images.unsplash.com/photo-1572346695468-2c6c86e8b2d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+      "img": "https://images.unsplash.com/photo-1572346695468-2c6c86e8b2d4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=40"
     },
     {
       "name": "Reprehenderit excepteur cillum ex sint nulla",
@@ -75,7 +75,7 @@
       "color": "black",
       "id": 49,
       "special": true,
-      "img": "https://images.unsplash.com/photo-1568450799101-ed4f8a096c9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
+      "img": "https://images.unsplash.com/photo-1568450799101-ed4f8a096c9d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=40"
     },
     {
       "name": "Product test 0001",
@@ -86,7 +86,7 @@
       "color": "black",
       "id": 65,
       "special": false,
-      "img": "https://images.unsplash.com/photo-1575325343883-76cc500753c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
+      "img": "https://images.unsplash.com/photo-1575325343883-76cc500753c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=40"
     },
     {
       "name": "Super prodcut custom",
@@ -97,7 +97,7 @@
       "color": "cyan",
       "id": 8,
       "special": false,
-      "img": "https://images.unsplash.com/photo-1593030679578-120dd71e7b06?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
+      "img": "https://images.unsplash.com/photo-1593030679578-120dd71e7b06?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=40"
     },
     {
       "name": "Polski produkt",
@@ -108,7 +108,7 @@
       "color": "black",
       "id": 0,
       "special": true,
-      "img": "https://images.unsplash.com/photo-1564556060741-a50d3bed6565?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
+      "img": "https://images.unsplash.com/photo-1564556060741-a50d3bed6565?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=40"
     }
   ]
 }
