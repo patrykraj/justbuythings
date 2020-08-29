@@ -2,7 +2,7 @@
   <li class="product-listed" :class="product.special ? 'special' : null">
     <router-link :to="{ name: 'product', params: { id: product.id } }">
       <div class="img-container">
-        <div class="img"></div>
+        <img :src="product.img" :alt="product.name" />
       </div>
     </router-link>
     <div class="data-container">
