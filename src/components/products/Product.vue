@@ -156,12 +156,13 @@ div.price-container {
 
 @media (max-width: 600px) {
   li.product-listed {
+    min-width: 50%;
     flex-direction: column;
     flex: 1 0 0;
     align-items: center;
-    min-width: 190px;
     text-align: center;
     border: none;
+    padding: 2rem 0;
   }
 
   h3.product-name {
@@ -173,6 +174,16 @@ div.price-container {
   li.product-listed {
     max-width: 60%;
     min-width: 250px;
+    padding-top: 0;
+  }
+
+  li + li {
+    margin: 2rem 0;
+  }
+
+  .img-container {
+    max-width: 100%;
+    max-height: 100%;
   }
 }
 </style>
