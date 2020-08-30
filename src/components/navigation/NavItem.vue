@@ -76,6 +76,7 @@ nav a.router-link-exact-active {
     padding: 5px 20px;
     height: 40px;
     width: 70px;
+    margin: 0;
   }
 
   .link-caption {

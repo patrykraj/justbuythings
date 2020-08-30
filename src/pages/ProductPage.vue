@@ -8,7 +8,7 @@
         <div class="img-container big">
           <img
             class="product-image"
-            v-bind:src="this.selectedProduct.img"
+            v-bind:src="this.selectedProduct.imgBig"
             :alt="this.selectedProduct.name"
           />
         </div>
