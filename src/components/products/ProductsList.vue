@@ -59,7 +59,7 @@ ul {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 360px) {
   ul {
     justify-content: center;
   }

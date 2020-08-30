@@ -170,7 +170,7 @@ div.price-container {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 360px) {
   li.product-listed {
     max-width: 60%;
     min-width: 250px;
