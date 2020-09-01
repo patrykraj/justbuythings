@@ -3,6 +3,7 @@
     <router-link class="link" :to="to">
       <span v-if="name === 'basket'" class="link-icon"><Shopping /></span>
       <span v-if="name === 'products'" class="link-icon"><Menu /></span>
+      <span v-if="name === 'sign in'" class="link-icon"><Account /></span>
       <span class="link-caption"
         ><span class="name">{{ name }}</span>
         <span class="quantity">{{
@@ -18,6 +19,7 @@ import { mapState } from "vuex";
 
 import Shopping from "vue-material-design-icons/Shopping.vue";
 import Menu from "vue-material-design-icons/Menu.vue";
+import Account from "vue-material-design-icons/Account.vue";
 
 export default {
   name: "NavList",
@@ -28,6 +30,7 @@ export default {
   components: {
     Shopping,
     Menu,
+    Account,
   },
   computed: {
     ...mapState(["basketProducts"]),

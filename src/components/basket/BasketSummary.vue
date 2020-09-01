@@ -5,7 +5,15 @@
       <span>Total</span><span>${{ totalPrice.toFixed(2) }}</span>
     </p>
     <p><span>Delivery</span><span>Free</span></p>
-    <Button @clicked="handleLogin" :payment="true" txt="Process to payment" />
+    <router-link class="redirect-link" v-if="!token" to="/auth"
+      >Sign in to buy</router-link
+    >
+    <Button
+      v-else
+      @clicked="handleLogin"
+      :payment="true"
+      txt="Process to payment"
+    />
   </div>
 </template>
 
@@ -48,6 +56,17 @@ export default {
 </script>
 
 <style>
+.redirect-link {
+  border: 2px solid #2c3e50;
+  text-decoration: none;
+  color: #2c3e50;
+  width: 100%;
+  display: block;
+  padding: 10px 0;
+  background: white;
+  font-weight: bold;
+}
+
 .basket-summary {
   background: whitesmoke;
   flex: 1;

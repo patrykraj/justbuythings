@@ -33,6 +33,10 @@ export default {
           name: "products",
         },
         {
+          to: "/auth",
+          name: "sign in",
+        },
+        {
           to: "/basket",
           name: "basket",
         },
