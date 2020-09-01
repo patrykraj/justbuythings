@@ -5,7 +5,7 @@
       <span>Total</span><span>${{ totalPrice.toFixed(2) }}</span>
     </p>
     <p><span>Delivery</span><span>Free</span></p>
-    <Button :payment="true" txt="Process to payment" />
+    <Button @clicked="handleLogin" :payment="true" txt="Process to payment" />
   </div>
 </template>
 

@@ -8,6 +8,7 @@ import App from "./App.vue";
 import ShopPage from "./pages/ShopPage.vue";
 import ProductPage from "./pages/ProductPage.vue";
 import BasketPage from "./pages/BasketPage.vue";
+import AuthenticatePage from "./pages/AuthenticatePage.vue";
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -24,6 +25,7 @@ const router = new VueRouter({
     },
     { path: "/", name: "home", component: ShopPage },
     { path: "/basket", name: "basket", component: BasketPage },
+    { path: "/auth", name: "auth", component: AuthenticatePage },
   ],
 });
 

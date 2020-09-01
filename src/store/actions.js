@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const actions = {
   getProducts() {
@@ -37,6 +38,27 @@ const actions = {
         state.failedToFetch = err;
         state.loading = false;
       });
+  },
+  async login(state) {
+    console.log(state);
+
+    axios
+      .post(
+        "http://localhost:5000/api/user/login",
+        {
+          email: "spidermanXDDD@email.com",
+          password: "supersimplepasswordXD",
+        },
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then((res) => {
+        const token = res.data;
+        const decoded = jwt_decode(token);
+        console.log(decoded);
+      })
+      .catch((err) => console.log("CANT LOGIN", err));
   },
 };
 
