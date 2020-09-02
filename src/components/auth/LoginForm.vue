@@ -1,19 +1,47 @@
 <template>
   <form class="auth-form" v-on:submit.prevent>
-    <label class="auth-input-row">
+    <label for="email" class="auth-input-row">
       <span class="auth-input-desc">Email</span>
-      <input class="auth-input" type="email" placeholder="email" />
+      <input
+        class="auth-input"
+        id="email"
+        v-model="userData.email"
+        name="email"
+        type="email"
+        placeholder="email"
+      />
     </label>
-    <label class="auth-input-row">
-      <span class="auth-input-desc"> Password</span>
-      <input class="auth-input" type="password" placeholder="password" />
+    <label for="password" class="auth-input-row">
+      <span class="auth-input-desc">Password</span>
+      <input
+        class="auth-input"
+        id="password"
+        v-model="userData.password"
+        name="password"
+        type="password"
+        placeholder="password"
+      />
     </label>
+    <Button @clicked="$emit('handleLogin', userData)" txt="Sign in" />
   </form>
 </template>
 
 <script>
+import Button from "../shared/Button";
+
 export default {
   name: "LoginForm",
+  components: {
+    Button,
+  },
+  data: function() {
+    return {
+      userData: {
+        email: "",
+        password: "",
+      },
+    };
+  },
 };
 </script>
 

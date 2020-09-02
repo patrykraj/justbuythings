@@ -3,10 +3,8 @@
     <NavBar />
     <div class="auth-container">
       <h2>{{ loginMode ? "Sign in" : "Sign up" }}</h2>
-      <LoginForm v-if="loginMode" />
-      <RegisterForm v-else />
-      <Button v-if="loginMode" @clicked="handleLogin" txt="Sign in" />
-      <Button v-else @clicked="handleRegister" txt="Sign up" />
+      <LoginForm v-if="loginMode" @handleLogin="handleLogin" />
+      <RegisterForm v-else @handleRegister="handleRegister" />
       <button class="mode-switch" @click="switchMode">
         {{
           loginMode
@@ -22,7 +20,6 @@
 <script>
 import NavBar from "../components/navigation/NavBar.vue";
 import Footer from "../components/sections/Footer";
-import Button from "../components/shared/Button";
 import LoginForm from "../components/auth/LoginForm";
 import RegisterForm from "../components/auth/RegisterForm";
 
@@ -33,7 +30,6 @@ export default {
   components: {
     NavBar,
     Footer,
-    Button,
     LoginForm,
     RegisterForm,
   },
@@ -44,14 +40,15 @@ export default {
   },
   methods: {
     ...mapActions(["login"]),
-    handleLogin() {
-      this.login();
+    switchMode() {
+      this.loginMode = !this.loginMode;
+    },
+    handleLogin(data) {
+      console.log(data, "userdata");
+      //  this.login();
     },
     handleRegister() {
       console.log("register");
-    },
-    switchMode() {
-      this.loginMode = !this.loginMode;
     },
   },
 };
