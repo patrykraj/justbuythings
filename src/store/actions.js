@@ -39,26 +39,24 @@ const actions = {
         state.loading = false;
       });
   },
-  async login(state) {
-    console.log(state);
+  async login({ state }, user) {
+    state.authError = null;
+    state.authLoading = true;
 
     axios
-      .post(
-        "http://localhost:5000/api/user/login",
-        {
-          email: "spidermanXDDD@email.com",
-          password: "supersimplepasswordXD",
-        },
-        {
-          "Content-Type": "application/json",
-        }
-      )
+      .post("http://localhost:5000/api/user/login", user, {
+        "Content-Type": "application/json",
+      })
       .then((res) => {
         const token = res.data;
         const decoded = jwt_decode(token);
         console.log(decoded);
+        state.authLoading = false;
       })
-      .catch((err) => console.log("CANT LOGIN", err));
+      .catch((err) => {
+        state.authError = err.response.data;
+        state.authLoading = false;
+      });
   },
 };
 

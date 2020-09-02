@@ -5,6 +5,9 @@
       <h2>{{ loginMode ? "Sign in" : "Sign up" }}</h2>
       <LoginForm v-if="loginMode" @handleLogin="handleLogin" />
       <RegisterForm v-else @handleRegister="handleRegister" />
+      <p v-if="authError" class="auth-error">
+        <Alert /><span class="error-text">{{ authError }}</span>
+      </p>
       <button class="mode-switch" @click="switchMode">
         {{
           loginMode
@@ -12,6 +15,7 @@
             : "Already have and account? Login"
         }}
       </button>
+      <AuthLoader v-if="authLoading" />
     </div>
     <Footer />
   </div>
@@ -22,8 +26,10 @@ import NavBar from "../components/navigation/NavBar.vue";
 import Footer from "../components/sections/Footer";
 import LoginForm from "../components/auth/LoginForm";
 import RegisterForm from "../components/auth/RegisterForm";
+import AuthLoader from "../components/auth/AuthLoader";
+import Alert from "vue-material-design-icons/Alert.vue";
 
-import { mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "AuthenticatePage",
@@ -32,11 +38,16 @@ export default {
     Footer,
     LoginForm,
     RegisterForm,
+    AuthLoader,
+    Alert,
   },
   data: function() {
     return {
       loginMode: true,
     };
+  },
+  computed: {
+    ...mapState(["authError", "authLoading"]),
   },
   methods: {
     ...mapActions(["login"]),
@@ -44,8 +55,12 @@ export default {
       this.loginMode = !this.loginMode;
     },
     handleLogin(data) {
-      console.log(data, "userdata");
-      //  this.login();
+      const user = {
+        email: data.email,
+        password: data.password,
+      };
+
+      this.login(user);
     },
     handleRegister() {
       console.log("register");
@@ -62,6 +77,26 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 0 1rem;
+  position: relative;
+}
+
+.auth-error {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 0, 0, 0.4);
+  color: rgb(150, 0, 0);
+  padding: 1rem;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.alert-icon {
+  display: flex;
+  align-items: center;
+}
+
+.error-text {
+  margin-left: 10px;
 }
 
 .mode-switch {
