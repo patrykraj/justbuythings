@@ -4,9 +4,17 @@
       <Store />
       <span class="logo-caption">Home</span>
     </router-link>
-    <ul class="top-bar">
+    <ul class="top-bar" v-if="!isAuthenticated">
       <NavItem
         v-for="link in links"
+        :key="link.name"
+        :name="link.name"
+        :to="link.to"
+      />
+    </ul>
+    <ul class="top-bar" v-if="isAuthenticated">
+      <NavItem
+        v-for="link in authLinks"
         :key="link.name"
         :name="link.name"
         :to="link.to"
@@ -19,11 +27,16 @@
 import NavItem from "./NavItem";
 import Store from "vue-material-design-icons/Store.vue";
 
+import { mapGetters } from "vuex";
+
 export default {
   name: "NavBar",
   components: {
     NavItem,
     Store,
+  },
+  computed: {
+    ...mapGetters(["isAuthenticated"]),
   },
   data: function() {
     return {
@@ -35,6 +48,20 @@ export default {
         {
           to: "/auth",
           name: "sign in",
+        },
+        {
+          to: "/basket",
+          name: "basket",
+        },
+      ],
+      authLinks: [
+        {
+          to: "/",
+          name: "products",
+        },
+        {
+          to: "/account",
+          name: "my account",
         },
         {
           to: "/basket",

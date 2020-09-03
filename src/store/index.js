@@ -37,6 +37,10 @@ const store = new Vuex.Store({
     tokenId: null,
   },
 
+  getters: {
+    isAuthenticated: (state) => state.tokenId && state.userData,
+  },
+
   actions,
   mutations,
 });

@@ -3,7 +3,9 @@
     <router-link class="link" :to="to">
       <span v-if="name === 'basket'" class="link-icon"><Shopping /></span>
       <span v-if="name === 'products'" class="link-icon"><Menu /></span>
-      <span v-if="name === 'sign in'" class="link-icon"><Account /></span>
+      <span v-if="name === 'sign in' || name === 'my account'" class="link-icon"
+        ><Account
+      /></span>
       <span class="link-caption"
         ><span class="name">{{ name }}</span>
         <span class="quantity">{{

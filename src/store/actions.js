@@ -1,5 +1,6 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import { router } from "../main.js";
 
 const actions = {
   getProducts() {
@@ -55,7 +56,7 @@ const actions = {
         state.userData = decoded;
         state.authLoading = false;
 
-        console.log(state);
+        router.push("/");
       })
       .catch((err) => {
         state.authError = err.response.data;
