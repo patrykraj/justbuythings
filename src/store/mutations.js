@@ -227,6 +227,10 @@ const mutations = {
     this.state.filterActive = filterActive;
     this.state.filteredProducts = [];
   },
+
+  resetAuthError(state) {
+    state.authError = null;
+  },
 };
 
 export default mutations;

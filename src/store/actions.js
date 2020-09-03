@@ -50,7 +50,32 @@ const actions = {
       .then((res) => {
         const token = res.data;
         const decoded = jwt_decode(token);
-        console.log(decoded);
+
+        state.tokenId = token;
+        state.userData = decoded;
+        state.authLoading = false;
+
+        console.log(state);
+      })
+      .catch((err) => {
+        state.authError = err.response.data;
+        state.authLoading = false;
+      });
+  },
+  async register({ state }, user) {
+    state.authError = null;
+    state.authLoading = true;
+
+    axios
+      .post("http://localhost:5000/api/user/register", user, {
+        "Content-Type": "application/json",
+      })
+      .then((res) => {
+        const token = res.data.user;
+        const decoded = jwt_decode(token);
+
+        state.tokenId = token;
+        state.userData = decoded;
         state.authLoading = false;
       })
       .catch((err) => {

@@ -33,6 +33,7 @@ const store = new Vuex.Store({
     loading: false,
     authError: null,
     authLoading: false,
+    userData: null,
     tokenId: null,
   },
 

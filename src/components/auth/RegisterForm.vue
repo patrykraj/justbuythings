@@ -55,7 +55,7 @@
         placeholder="repeat password"
       />
     </label>
-    <Button @clicked="handleRegister" txt="Sign up" />
+    <Button @clicked="$emit('handleRegister', userData)" txt="Sign up" />
   </form>
 </template>
 

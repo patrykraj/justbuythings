@@ -29,7 +29,7 @@ import RegisterForm from "../components/auth/RegisterForm";
 import AuthLoader from "../components/auth/AuthLoader";
 import Alert from "vue-material-design-icons/Alert.vue";
 
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
   name: "AuthenticatePage",
@@ -50,20 +50,25 @@ export default {
     ...mapState(["authError", "authLoading"]),
   },
   methods: {
-    ...mapActions(["login"]),
+    ...mapActions(["login", "register"]),
+    ...mapMutations(["resetAuthError"]),
     switchMode() {
       this.loginMode = !this.loginMode;
+      this.resetAuthError();
     },
     handleLogin(data) {
       const user = {
-        email: data.email,
-        password: data.password,
+        ...data,
       };
 
       this.login(user);
     },
-    handleRegister() {
-      console.log("register");
+    handleRegister(data) {
+      const user = {
+        ...data,
+      };
+
+      this.register(user);
     },
   },
 };
