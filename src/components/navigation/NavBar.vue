@@ -67,6 +67,10 @@ export default {
           to: "/basket",
           name: "basket",
         },
+        {
+          to: "/logout",
+          name: "logout",
+        },
       ],
     };
   },

@@ -6,6 +6,7 @@
       <span v-if="name === 'sign in' || name === 'my account'" class="link-icon"
         ><Account
       /></span>
+      <span v-if="name === 'logout'" class="link-icon"><ExitToApp /></span>
       <span class="link-caption"
         ><span class="name">{{ name }}</span>
         <span class="quantity">{{
@@ -22,6 +23,7 @@ import { mapState } from "vuex";
 import Shopping from "vue-material-design-icons/Shopping.vue";
 import Menu from "vue-material-design-icons/Menu.vue";
 import Account from "vue-material-design-icons/Account.vue";
+import ExitToApp from "vue-material-design-icons/ExitToApp.vue";
 
 export default {
   name: "NavList",
@@ -33,6 +35,7 @@ export default {
     Shopping,
     Menu,
     Account,
+    ExitToApp,
   },
   computed: {
     ...mapState(["basketProducts"]),

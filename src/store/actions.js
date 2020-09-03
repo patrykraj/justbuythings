@@ -72,17 +72,24 @@ const actions = {
         "Content-Type": "application/json",
       })
       .then((res) => {
-        const token = res.data.user;
+        console.log(res, "RES!!!!!!!!!!!!");
+        const token = res.data;
         const decoded = jwt_decode(token);
 
         state.tokenId = token;
         state.userData = decoded;
         state.authLoading = false;
+
+        router.push("/");
       })
       .catch((err) => {
         state.authError = err.response.data;
         state.authLoading = false;
       });
+  },
+  logout({ state }) {
+    state.tokenId = null;
+    state.userData = null;
   },
 };
 

@@ -28,11 +28,17 @@ export const router = new VueRouter({
     { path: "/basket", name: "basket", component: BasketPage },
     { path: "/auth", name: "auth", component: AuthenticatePage },
     { path: "/account", name: "my account", component: AccountPage },
+    { path: "/logout", name: "logout" },
   ],
 });
 
 router.beforeEach((to, from, next) => {
   if (to.name === "auth" && store.getters.isAuthenticated)
+    next({ name: "home" });
+  else if (to.name === "logout" && store.getters.isAuthenticated) {
+    store.dispatch("logout");
+    next({ name: "home" });
+  } else if (to.name === "logout" && !store.getters.isAuthenticated)
     next({ name: "home" });
   else if (!to.matched.length) next("/notFound");
   else next();
