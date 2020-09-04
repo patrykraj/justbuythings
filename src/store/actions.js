@@ -49,7 +49,6 @@ const actions = {
         "Content-Type": "application/json",
       })
       .then((res) => {
-        console.log(res.headers);
         const token = res.data;
         const decoded = jwt_decode(token);
 
@@ -102,7 +101,6 @@ const actions = {
 
     const token = JSON.parse(localStorage.getItem("token"));
 
-    console.log("WESZLO DO AUTOLOGIN");
     state.authLoading = true;
 
     axios
@@ -110,15 +108,11 @@ const actions = {
         headers: { "auth-token": token },
       })
       .then((res) => {
-        console.log(res, "response");
-        // const token = res.data;
-        // const decoded = jwt_decode(token);
-
-        // state.userData = decoded;
+        state.userData = res.data;
+        state.tokenId = token;
         state.authLoading = false;
       })
       .catch((err) => {
-        console.log(err, "ERROR AUTOLOGIN");
         state.authError = err.response.data;
         state.authLoading = false;
       });

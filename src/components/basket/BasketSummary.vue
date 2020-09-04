@@ -5,22 +5,17 @@
       <span>Total</span><span>${{ totalPrice.toFixed(2) }}</span>
     </p>
     <p><span>Delivery</span><span>Free</span></p>
-    <router-link class="redirect-link" v-if="!token" to="/auth"
+    <router-link class="redirect-link" v-if="!isAuthenticated" to="/auth"
       >Sign in to buy</router-link
     >
-    <Button
-      v-else
-      @clicked="handleLogin"
-      :payment="true"
-      txt="Process to payment"
-    />
+    <Button v-else @clicked="handleBuy" :payment="true" txt="Buy" />
   </div>
 </template>
 
 <script>
 import Button from "../shared/Button";
 
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "BasketSummary",
@@ -34,11 +29,15 @@ export default {
   },
   computed: {
     ...mapState(["basketProducts"]),
+    ...mapGetters(["isAuthenticated"]),
   },
   methods: {
     ...mapMutations(["removeFromBasket"]),
     handleRemoveFromBasket(id) {
       this.removeFromBasket(id);
+    },
+    handleBuy() {
+      console.log("bought");
     },
   },
   mounted: function() {
@@ -65,6 +64,12 @@ export default {
   padding: 10px 0;
   background: white;
   font-weight: bold;
+  transition: 0.3s all;
+}
+
+.redirect-link:hover {
+  background: #2c3e50;
+  color: white;
 }
 
 .basket-summary {
