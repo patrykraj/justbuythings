@@ -49,12 +49,15 @@ const actions = {
         "Content-Type": "application/json",
       })
       .then((res) => {
+        console.log(res.headers);
         const token = res.data;
         const decoded = jwt_decode(token);
 
         state.tokenId = token;
         state.userData = decoded;
         state.authLoading = false;
+
+        localStorage.setItem("token", JSON.stringify(token));
 
         router.push("/");
       })
@@ -72,13 +75,14 @@ const actions = {
         "Content-Type": "application/json",
       })
       .then((res) => {
-        console.log(res, "RES!!!!!!!!!!!!");
         const token = res.data;
         const decoded = jwt_decode(token);
 
         state.tokenId = token;
         state.userData = decoded;
         state.authLoading = false;
+
+        localStorage.setItem("token", JSON.stringify(token));
 
         router.push("/");
       })
@@ -90,6 +94,34 @@ const actions = {
   logout({ state }) {
     state.tokenId = null;
     state.userData = null;
+
+    localStorage.removeItem("token");
+  },
+  async tryAutoLogin({ state }) {
+    if (!localStorage.getItem("token")) return;
+
+    const token = JSON.parse(localStorage.getItem("token"));
+
+    console.log("WESZLO DO AUTOLOGIN");
+    state.authLoading = true;
+
+    axios
+      .get("http://localhost:5000/api/user/getuser", {
+        headers: { "auth-token": token },
+      })
+      .then((res) => {
+        console.log(res, "response");
+        // const token = res.data;
+        // const decoded = jwt_decode(token);
+
+        // state.userData = decoded;
+        state.authLoading = false;
+      })
+      .catch((err) => {
+        console.log(err, "ERROR AUTOLOGIN");
+        state.authError = err.response.data;
+        state.authLoading = false;
+      });
   },
 };
 
