@@ -1,6 +1,8 @@
 <template>
   <li class="order-container">
-    <h4 class="order-id">Order id: {{ product.orderId }}</h4>
+    <h4 class="order-id">
+      Order id: <span class="uppercase">{{ product.orderId }}</span>
+    </h4>
     <div class="order-flex">
       <div class="order-info-container">
         <span class="order-date-header">Order date</span>
@@ -15,9 +17,11 @@
           :to="{ name: 'product', params: { id: product.id } }"
         >
           <img class="product-image" :src="product.img" alt="product.name" />
-          <p class="product-info-desc">{{ product.name }}</p>
-          <p class="product-info-desc">{{ product.model }}</p>
-          <p class="product-info-desc">{{ product.color }}</p>
+          <div>
+            <p class="product-info-desc">{{ product.name }}</p>
+            <p class="product-info-desc">{{ product.model }}</p>
+            <p class="product-info-desc">{{ product.color }}</p>
+          </div>
         </router-link>
       </div>
       <div class="order-price-container">
@@ -58,6 +62,10 @@ export default {
   padding: 1rem 0;
   text-align: left;
   border-bottom: 1px solid #2c3e50;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .order-container:last-child {

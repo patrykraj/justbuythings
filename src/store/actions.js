@@ -118,6 +118,10 @@ const actions = {
       });
   },
   async buyProducts({ state }) {
+    const orderId = Math.random()
+      .toString(36)
+      .substr(2, 9);
+
     const products = [];
     state.basketProducts.map((product) => {
       const newProduct = {
@@ -130,9 +134,11 @@ const actions = {
         img: product.img,
         id: product.id,
         date: new Date(),
-        orderId: Math.random()
+        orderId,
+        renderId: Math.random()
           .toString(36)
           .substr(2, 9),
+        canceled: false,
       };
 
       products.push(newProduct);
