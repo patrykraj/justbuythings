@@ -117,6 +117,17 @@ const actions = {
         state.authLoading = false;
       });
   },
+  async buyProducts({ state }) {
+    axios
+      .patch("http://localhost:5000/api/user/buy")
+      .then((res) => {
+        console.log(res, state);
+        state.basketProducts = [];
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 };
 
 export default actions;
