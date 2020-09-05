@@ -128,8 +128,9 @@ const actions = {
         brand: product.brand,
         color: product.color,
         img: product.img,
+        id: product.id,
         date: new Date(),
-        id: Math.random()
+        orderId: Math.random()
           .toString(36)
           .substr(2, 9),
       };
@@ -147,7 +148,8 @@ const actions = {
         state.userData.transactions = res.data.transactions.reverse();
         state.basketProducts = [];
 
-        localStorage.setItem("basket", JSON.stringify("[]"));
+        const newBasket = [];
+        localStorage.setItem("basket", JSON.stringify(newBasket));
       })
       .catch((err) => {
         console.log(err);

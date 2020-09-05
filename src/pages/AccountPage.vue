@@ -4,7 +4,9 @@
     <div class="content-wrapper">
       <Loader v-if="!userData" />
       <div v-else>
-        <h2 class="page-header">Hello {{ userData.name }}</h2>
+        <h2 class="page-header">
+          Hello <span class="username">{{ userData.name }}</span>
+        </h2>
         <div class="account-info account-info-wrapper">
           <h2 class="info-header">My data</h2>
           <div class="user-data-container">
@@ -73,6 +75,10 @@ export default {
   font-size: 2rem;
 }
 
+.username {
+  text-transform: capitalize;
+}
+
 .account-info-wrapper {
   background: whitesmoke;
   padding: 1rem;
@@ -89,6 +95,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  flex-wrap: wrap;
   font-size: 1.1rem;
   text-align: left;
 }
