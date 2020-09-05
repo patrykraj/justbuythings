@@ -37,7 +37,12 @@
         </div>
       </div>
       <div class="order-cancel-container">
-        <Button txt="Cancel" />
+        <Button
+          v-if="!product.cancelled"
+          @clicked="cancelOrder(product.renderId)"
+          txt="Cancel"
+        />
+        <h4 v-else>cancelled</h4>
       </div>
     </div>
   </li>
@@ -46,6 +51,8 @@
 <script>
 import Button from "../shared/Button";
 
+import { mapActions } from "vuex";
+
 export default {
   name: "Order",
   components: {
@@ -53,6 +60,9 @@ export default {
   },
   props: {
     product: Object,
+  },
+  methods: {
+    ...mapActions(["cancelOrder"]),
   },
 };
 </script>

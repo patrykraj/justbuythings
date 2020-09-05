@@ -138,14 +138,14 @@ const actions = {
         renderId: Math.random()
           .toString(36)
           .substr(2, 9),
-        canceled: false,
+        cancelled: false,
       };
 
       products.push(newProduct);
     });
 
     axios
-      .post("http://localhost:5000/api/orders/buy", {
+      .patch("http://localhost:5000/api/orders/buy", {
         email: state.userData.email,
         products: [...products],
         date: new Date(),
@@ -161,13 +161,20 @@ const actions = {
         console.log(err);
       });
   },
-  async getOrders({ state }) {
+  async cancelOrder({ state }, id) {
+    const data = {
+      id,
+      email: state.userData.email,
+    };
+
     axios
-      .get("http://localhost:5000/api/orders/getorders", state.userData.email)
+      .patch("http://localhost:5000/api/orders/cancel", data)
       .then((res) => {
-        console.log(res);
+        state.userData.transactions = res.data.transactions.reverse();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 
