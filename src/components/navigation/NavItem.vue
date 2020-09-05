@@ -102,4 +102,15 @@ nav a.router-link-exact-active {
     right: 3px;
   }
 }
+
+@media (max-width: 370px) {
+  li {
+    width: 25%;
+  }
+
+  a.link {
+    width: 100%;
+    padding: 5px 0;
+  }
+}
 </style>

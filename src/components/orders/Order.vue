@@ -104,8 +104,13 @@ export default {
   font-size: 0.9rem;
 }
 
+.order-info-container {
+  flex: 1 1 0;
+}
+
 .order-price-container {
-  margin: 0 1.3rem;
+  margin: 0 1.5rem;
+  flex: 1 1 0;
 }
 
 .order-price {
@@ -123,6 +128,7 @@ export default {
 
   .order-cancel-container {
     margin-top: 10px;
+    flex: 1 1 0;
   }
 }
 

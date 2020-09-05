@@ -93,12 +93,15 @@ export default {
 
 .top-bar {
   display: flex;
+  padding: 0;
+  margin: 0;
   list-style: none;
 }
 
 .logo {
   background: #42b883;
   height: 50px;
+  padding: 5px 20px;
   width: 80px;
   border-radius: 15px;
   display: flex;
@@ -138,6 +141,29 @@ export default {
     background: #42b883;
     height: 40px;
     width: 70px;
+  }
+}
+
+@media (max-width: 450px) {
+  .logo {
+    width: 60px;
+  }
+
+  .nav {
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 370px) {
+  .top-bar {
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 340px) {
+  .logo {
+    width: 20%;
+    padding: 5px 0;
   }
 }
 </style>
