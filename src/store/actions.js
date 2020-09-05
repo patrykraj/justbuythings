@@ -118,15 +118,48 @@ const actions = {
       });
   },
   async buyProducts({ state }) {
+    const products = [];
+    state.basketProducts.map((product) => {
+      const newProduct = {
+        price: product.price * product.quantity,
+        quantity: product.quantity,
+        name: product.name,
+        model: product.model,
+        brand: product.brand,
+        color: product.color,
+        img: product.img,
+        date: new Date(),
+        id:
+          "_" +
+          Math.random()
+            .toString(36)
+            .substr(2, 9),
+      };
+
+      products.push(newProduct);
+    });
+
     axios
-      .patch("http://localhost:5000/api/user/buy")
+      .post("http://localhost:5000/api/orders/buy", {
+        email: state.userData.email,
+        products: [...products],
+        date: new Date(),
+      })
       .then((res) => {
-        console.log(res, state);
+        state.userData.transactions = res.data.transactions;
         state.basketProducts = [];
       })
       .catch((err) => {
         console.log(err);
       });
+  },
+  async getOrders({ state }) {
+    axios
+      .get("http://localhost:5000/api/orders/getorders", state.userData.email)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
   },
 };
 

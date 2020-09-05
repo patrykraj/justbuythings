@@ -22,8 +22,14 @@
             </p>
           </div>
         </div>
-        <div class="account-transactions account-info-wrapper">
-          <h2 class="info-header">My transactions</h2>
+        <div class="account-orders account-info-wrapper">
+          <h2 class="info-header">My orders</h2>
+          <ul v-if="userData.transactions.length">
+            <li v-for="order in userData.transactions" :key="order.id">
+              ORDER
+            </li>
+          </ul>
+          <h3 v-else>No orders yet.</h3>
         </div>
       </div>
     </div>
@@ -36,7 +42,7 @@ import NavBar from "../components/navigation/NavBar.vue";
 import Footer from "../components/sections/Footer";
 import Loader from "../components/shared/Loader";
 
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "AccountPage",
@@ -47,6 +53,9 @@ export default {
   },
   computed: {
     ...mapState(["userData"]),
+  },
+  methods: {
+    ...mapActions(["getOrders"]),
   },
 };
 </script>
