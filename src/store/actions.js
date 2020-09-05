@@ -148,6 +148,8 @@ const actions = {
       .then((res) => {
         state.userData.transactions = res.data.transactions;
         state.basketProducts = [];
+
+        localStorage.setItem("basket", JSON.stringify("[]"));
       })
       .catch((err) => {
         console.log(err);
