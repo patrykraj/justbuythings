@@ -24,11 +24,10 @@
         </div>
         <div class="account-orders account-info-wrapper">
           <h2 class="info-header">My orders</h2>
-          <ul v-if="userData.transactions.length">
-            <li v-for="order in userData.transactions" :key="order.id">
-              ORDER
-            </li>
-          </ul>
+          <OrdersList
+            v-if="userData.transactions.length"
+            :transactions="userData.transactions"
+          />
           <h3 v-else>No orders yet.</h3>
         </div>
       </div>
@@ -41,6 +40,7 @@
 import NavBar from "../components/navigation/NavBar.vue";
 import Footer from "../components/sections/Footer";
 import Loader from "../components/shared/Loader";
+import OrdersList from "../components/orders/OrdersList";
 
 import { mapState, mapActions } from "vuex";
 
@@ -50,6 +50,7 @@ export default {
     NavBar,
     Footer,
     Loader,
+    OrdersList,
   },
   computed: {
     ...mapState(["userData"]),
