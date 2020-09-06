@@ -151,7 +151,8 @@ const actions = {
         date: new Date(),
       })
       .then((res) => {
-        state.userData.transactions = res.data.transactions.reverse();
+        console.log(res);
+        state.userData.transactions = res.data;
         state.basketProducts = [];
 
         const newBasket = [];
@@ -170,7 +171,7 @@ const actions = {
     axios
       .patch("http://localhost:5000/api/orders/cancel", data)
       .then((res) => {
-        state.userData.transactions = res.data.transactions.reverse();
+        state.userData.transactions = res.data;
       })
       .catch((err) => {
         console.log(err);

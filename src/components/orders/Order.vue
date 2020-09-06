@@ -1,5 +1,6 @@
 <template>
   <li class="order-container">
+    <CancelOverlay v-if="product.cancelled" />
     <h4 class="order-id">
       Order id: <span class="uppercase">{{ product.orderId }}</span>
     </h4>
@@ -50,6 +51,7 @@
 
 <script>
 import Button from "../shared/Button";
+import CancelOverlay from "./CancelOverlay";
 
 import { mapActions } from "vuex";
 
@@ -57,6 +59,7 @@ export default {
   name: "Order",
   components: {
     Button,
+    CancelOverlay,
   },
   props: {
     product: Object,
@@ -69,9 +72,11 @@ export default {
 
 <style scoped>
 .order-container {
+  margin: 5px 0;
   padding: 1rem 0;
   text-align: left;
   border-bottom: 1px solid #2c3e50;
+  position: relative;
 }
 
 .uppercase {

@@ -12,11 +12,11 @@
           <div class="user-data-container">
             <p class="row">
               <span class="row-header">Name</span>
-              <span class="row-data">{{ userData.name }}</span>
+              <span class="row-data username">{{ userData.name }}</span>
             </p>
             <p class="row">
               <span class="row-header">Lastname</span>
-              <span class="row-data">{{ userData.lastname }}</span>
+              <span class="row-data username">{{ userData.lastname }}</span>
             </p>
             <p class="row">
               <span class="row-header">Email</span>
@@ -109,5 +109,15 @@ export default {
 .row-data {
   flex-grow: 5;
   flex: 5 1 0;
+}
+
+@media (max-width: 600px) {
+  .content-wrapper {
+    padding: 1rem 5px;
+  }
+
+  .account-info-wrapper {
+    padding: 5px 5px;
+  }
 }
 </style>

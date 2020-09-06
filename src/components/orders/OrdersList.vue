@@ -2,7 +2,7 @@
   <ul class="orders-list">
     <Order
       v-for="orderItem in transactions"
-      :key="orderItem.id"
+      :key="orderItem.renderId"
       :product="orderItem"
     />
   </ul>
