@@ -233,11 +233,11 @@ const mutations = {
   },
 
   handleConfirmAction(state) {
-    console.log(state);
     state.confirmAction = true;
   },
 
   handleCancelAction(state) {
+    state.errorAction = false;
     state.confirmAction = false;
   },
 };

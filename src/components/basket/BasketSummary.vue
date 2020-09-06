@@ -15,7 +15,7 @@
 <script>
 import Button from "../shared/Button";
 
-import { mapState, mapActions, mapGetters, mapMutations } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "BasketSummary",
@@ -33,15 +33,11 @@ export default {
   },
   methods: {
     ...mapMutations(["removeFromBasket", "handleConfirmAction"]),
-    ...mapActions(["buyProducts"]),
     handleRemoveFromBasket(id) {
       this.removeFromBasket(id);
     },
     handleConfirm() {
       this.handleConfirmAction();
-    },
-    handleBuy() {
-      this.buyProducts();
     },
   },
   mounted: function() {

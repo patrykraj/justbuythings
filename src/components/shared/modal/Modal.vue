@@ -1,15 +1,30 @@
 <template>
   <Backdrop>
-    <div class="modal" @click.stop="handleStop">
-      <div class="modal-top">
-        <button class="hide" @click="handleCancelAction">&times;</button>
+    <div class="modal-container" @click.stop>
+      <div v-if="loadingAction" class="modal-loading">
+        <h2>Processing...</h2>
       </div>
-      <p class="modal-text">{{ txt }}</p>
-      <div class="modal-bottom">
-        <button class="modal-btn confirm" @click="handleStop">Confirm</button>
-        <button class="modal-btn" @click="handleCancelAction">
-          Cancel
-        </button>
+      <div class="modal-error" v-else-if="errorAction">
+        <div class="modal-top">
+          <button class="hide" @click="handleCancelAction">&times;</button>
+        </div>
+        <h2>Error occured:</h2>
+        <p>{{ errorAction }}</p>
+        <p>Please reload the page or try again later.</p>
+      </div>
+      <div class="modal" v-else>
+        <div class="modal-top">
+          <button class="hide" @click="handleCancelAction">&times;</button>
+        </div>
+        <p class="modal-text">{{ txt }}</p>
+        <div class="modal-bottom">
+          <button class="modal-btn confirm" @click="handlePropsFunction">
+            Confirm
+          </button>
+          <button class="modal-btn" @click="handleCancelAction">
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   </Backdrop>
@@ -18,7 +33,7 @@
 <script>
 import Backdrop from "./Backdrop";
 
-import { mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Modal",
@@ -28,15 +43,20 @@ export default {
   components: {
     Backdrop,
   },
+  computed: {
+    ...mapState(["loadingAction", "errorAction"]),
+  },
   methods: {
     ...mapMutations(["handleCancelAction"]),
-    handleStop() {},
+    handlePropsFunction() {
+      this.$emit("clicked");
+    },
   },
 };
 </script>
 
-<style>
-.modal {
+<style scoped>
+.modal-container {
   background: white;
   width: 90%;
   max-width: 400px;
@@ -44,10 +64,26 @@ export default {
   border-radius: 5px;
   overflow: hidden;
   transform: translateY(-100px);
+}
+
+.modal {
+  height: 100%;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.modal-error,
+.modal-loading {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-loading {
+  height: 100%;
 }
 
 .modal-top,
@@ -72,6 +108,10 @@ export default {
   cursor: pointer;
   font-size: 2rem;
   color: crimson;
+}
+
+.hide:focus {
+  outline: none;
 }
 
 .modal-text {

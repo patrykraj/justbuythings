@@ -118,6 +118,9 @@ const actions = {
       });
   },
   async buyProducts({ state }) {
+    state.loadingAction = true;
+    state.confirmAction = false;
+
     const orderId = Math.random()
       .toString(36)
       .substr(2, 9);
@@ -156,9 +159,11 @@ const actions = {
 
         const newBasket = [];
         localStorage.setItem("basket", JSON.stringify(newBasket));
+        state.loadingAction = false;
       })
       .catch((err) => {
-        console.log(err);
+        state.errorAction = err;
+        state.loadingAction = false;
       });
   },
   async cancelOrder({ state }, id) {

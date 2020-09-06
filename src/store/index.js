@@ -32,6 +32,8 @@ const store = new Vuex.Store({
     failedToFetch: null,
     loading: false,
     confirmAction: false,
+    loadingAction: false,
+    errorAction: null,
     authError: null,
     authLoading: false,
     userData: null,

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Modal txt="Are you sure?" />
     <div class="basket-container">
+      <Modal txt="Are you sure?" @clicked="buyProducts" />
       <NavBar />
       <BasketEmpty v-if="!basketProducts.length" />
       <div v-else class="basket">
@@ -31,7 +31,7 @@ import BasketSummary from "../components/basket/BasketSummary";
 import BasketEmpty from "../components/basket/BasketEmpty";
 import Modal from "../components/shared/modal/Modal";
 
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
   name: "BasketPage",
@@ -47,6 +47,7 @@ export default {
     ...mapState(["basketProducts"]),
   },
   methods: {
+    ...mapActions(["buyProducts"]),
     ...mapMutations(["removeFromBasket"]),
     handleRemoveFromBasket(id) {
       this.removeFromBasket(id);
