@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Modal txt="Are you sure?" />
     <div class="basket-container">
       <NavBar />
       <BasketEmpty v-if="!basketProducts.length" />
@@ -28,6 +29,7 @@ import Footer from "../components/sections/Footer";
 import BasketProduct from "../components/basket/BasketProduct";
 import BasketSummary from "../components/basket/BasketSummary";
 import BasketEmpty from "../components/basket/BasketEmpty";
+import Modal from "../components/shared/modal/Modal";
 
 import { mapState, mapMutations } from "vuex";
 
@@ -39,6 +41,7 @@ export default {
     BasketProduct,
     BasketSummary,
     BasketEmpty,
+    Modal,
   },
   computed: {
     ...mapState(["basketProducts"]),
@@ -94,6 +97,12 @@ export default {
 
   .basket-items {
     width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .basket-container {
+    min-height: calc(100vh - 290px);
   }
 }
 </style>

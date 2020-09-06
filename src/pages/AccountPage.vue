@@ -28,7 +28,7 @@
           <h2 class="info-header">My orders</h2>
           <OrdersList
             v-if="userData.transactions.length"
-            :transactions="userData.transactions"
+            :transactions="userData.transactions.slice().reverse()"
           />
           <h3 v-else>No orders yet.</h3>
         </div>

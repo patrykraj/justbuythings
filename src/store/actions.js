@@ -151,7 +151,6 @@ const actions = {
         date: new Date(),
       })
       .then((res) => {
-        console.log(res);
         state.userData.transactions = res.data;
         state.basketProducts = [];
 

@@ -231,6 +231,15 @@ const mutations = {
   resetAuthError(state) {
     state.authError = null;
   },
+
+  handleConfirmAction(state) {
+    console.log(state);
+    state.confirmAction = true;
+  },
+
+  handleCancelAction(state) {
+    state.confirmAction = false;
+  },
 };
 
 export default mutations;

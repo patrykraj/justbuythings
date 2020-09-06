@@ -8,7 +8,7 @@
     <router-link class="redirect-link" v-if="!isAuthenticated" to="/auth"
       >Sign in to buy</router-link
     >
-    <Button v-else @clicked="handleBuy" :payment="true" txt="Buy" />
+    <Button v-else @clicked="handleConfirm" :payment="true" txt="Buy" />
   </div>
 </template>
 
@@ -32,10 +32,13 @@ export default {
     ...mapGetters(["isAuthenticated"]),
   },
   methods: {
-    ...mapMutations(["removeFromBasket"]),
+    ...mapMutations(["removeFromBasket", "handleConfirmAction"]),
     ...mapActions(["buyProducts"]),
     handleRemoveFromBasket(id) {
       this.removeFromBasket(id);
+    },
+    handleConfirm() {
+      this.handleConfirmAction();
     },
     handleBuy() {
       this.buyProducts();

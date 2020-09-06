@@ -3,6 +3,7 @@
     <router-link :to="{ name: 'product', params: { id: product.id } }">
       <div class="img-container">
         <img
+          SameSite="None"
           class="product-image"
           v-bind:src="product.img"
           :alt="product.name"
