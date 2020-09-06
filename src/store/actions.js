@@ -169,9 +169,14 @@ const actions = {
         state.loadingAction = false;
       });
   },
-  async cancelOrder({ state }, id) {
+  async cancelOrder({ state }) {
+    state.loadingAction = true;
+    state.confirmAction = false;
+    state.errorAction = null;
+    state.successAction = null;
+
     const data = {
-      id,
+      id: state.cancelId,
       email: state.userData.email,
     };
 
@@ -179,9 +184,12 @@ const actions = {
       .patch("http://localhost:5000/api/orders/cancel", data)
       .then((res) => {
         state.userData.transactions = res.data;
+        state.loadingAction = false;
+        state.successAction = "Transaction has been cancelled";
       })
       .catch((err) => {
-        console.log(err);
+        state.loadingAction = false;
+        state.errorAction = err;
       });
   },
 };

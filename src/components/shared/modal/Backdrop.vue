@@ -35,10 +35,10 @@ export default {
 .backdrop {
   z-index: 1;
   pointer-events: none;
-  position: absolute;
-  top: 70px;
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: calc(100% - 70px);
+  height: 100%;
   background: rgba(0, 0, 0, 0);
   display: flex;
   justify-content: center;

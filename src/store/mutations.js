@@ -241,6 +241,10 @@ const mutations = {
     state.successAction = null;
     state.confirmAction = false;
   },
+
+  setCancelId(state, id) {
+    state.cancelId = id;
+  },
 };
 
 export default mutations;

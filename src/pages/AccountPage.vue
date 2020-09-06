@@ -1,6 +1,7 @@
 <template>
   <div>
     <NavBar />
+    <Modal txt="Cancel order?" @clicked="cancelOrder" />
     <div class="content-wrapper">
       <Loader v-if="!userData" />
       <div v-else>
@@ -43,6 +44,7 @@ import NavBar from "../components/navigation/NavBar.vue";
 import Footer from "../components/sections/Footer";
 import Loader from "../components/shared/Loader";
 import OrdersList from "../components/orders/OrdersList";
+import Modal from "../components/shared/modal/Modal";
 
 import { mapState, mapActions } from "vuex";
 
@@ -53,12 +55,13 @@ export default {
     Footer,
     Loader,
     OrdersList,
+    Modal,
   },
   computed: {
     ...mapState(["userData"]),
   },
   methods: {
-    ...mapActions(["getOrders"]),
+    ...mapActions(["cancelOrder"]),
   },
 };
 </script>

@@ -40,7 +40,7 @@
       <div class="order-cancel-container">
         <Button
           v-if="!product.cancelled"
-          @clicked="cancelOrder(product.renderId)"
+          @clicked="handleCancelOrder(product.renderId)"
           txt="Cancel"
         />
         <h4 v-else>cancelled</h4>
@@ -53,7 +53,7 @@
 import Button from "../shared/Button";
 import CancelOverlay from "./CancelOverlay";
 
-import { mapActions } from "vuex";
+import { mapMutations } from "vuex";
 
 export default {
   name: "Order",
@@ -65,7 +65,11 @@ export default {
     product: Object,
   },
   methods: {
-    ...mapActions(["cancelOrder"]),
+    ...mapMutations(["handleConfirmAction", "setCancelId"]),
+    handleCancelOrder(id) {
+      this.handleConfirmAction();
+      this.setCancelId(id);
+    },
   },
 };
 </script>

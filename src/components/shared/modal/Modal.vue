@@ -33,6 +33,7 @@
       </div>
       <div class="modal" v-else>
         <div class="modal-top">
+          <h3 class="notification-caption">Notification</h3>
           <button class="hide" @click="handleCancelAction">&times;</button>
         </div>
         <p class="modal-text">{{ txt }}</p>
@@ -122,6 +123,14 @@ export default {
   width: 100%;
   padding: 5px;
   text-align: right;
+  position: relative;
+}
+
+.notification-caption {
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -40%);
 }
 
 .modal-bottom {
