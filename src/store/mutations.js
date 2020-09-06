@@ -237,7 +237,8 @@ const mutations = {
   },
 
   handleCancelAction(state) {
-    state.errorAction = false;
+    state.errorAction = null;
+    state.successAction = null;
     state.confirmAction = false;
   },
 };

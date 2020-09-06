@@ -1,6 +1,14 @@
 <template>
   <Backdrop>
-    <div class="modal-container" @click.stop>
+    <div
+      class="modal-container"
+      :class="
+        confirmAction || loadingAction || successAction || errorAction
+          ? 'show'
+          : null
+      "
+      @click.stop
+    >
       <div v-if="loadingAction" class="modal-loading">
         <h2>Processing...</h2>
       </div>
@@ -11,6 +19,17 @@
         <h2>Error occured:</h2>
         <p>{{ errorAction }}</p>
         <p>Please reload the page or try again later.</p>
+      </div>
+      <div v-else-if="successAction" class="modal-success">
+        <div class="modal-top">
+          <button class="hide" @click="handleCancelAction">&times;</button>
+        </div>
+        <h2>{{ successAction }}</h2>
+        <div class="modal-bottom">
+          <button class="modal-btn confirm" @click="handleCancelAction">
+            Confirm
+          </button>
+        </div>
       </div>
       <div class="modal" v-else>
         <div class="modal-top">
@@ -44,7 +63,12 @@ export default {
     Backdrop,
   },
   computed: {
-    ...mapState(["loadingAction", "errorAction"]),
+    ...mapState([
+      "loadingAction",
+      "errorAction",
+      "confirmAction",
+      "successAction",
+    ]),
   },
   methods: {
     ...mapMutations(["handleCancelAction"]),
@@ -63,10 +87,16 @@ export default {
   height: 250px;
   border-radius: 5px;
   overflow: hidden;
-  transform: translateY(-100px);
+  transform: translate(-500%, -100px);
+  transition: 0.3s all;
 }
 
-.modal {
+.modal-container.show {
+  transform: translate(0, -100px);
+}
+
+.modal,
+.modal-success {
   height: 100%;
   display: flex;
   flex-flow: column;

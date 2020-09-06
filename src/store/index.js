@@ -34,6 +34,7 @@ const store = new Vuex.Store({
     confirmAction: false,
     loadingAction: false,
     errorAction: null,
+    successAction: null,
     authError: null,
     authLoading: false,
     userData: null,

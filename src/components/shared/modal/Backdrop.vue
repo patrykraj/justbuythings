@@ -1,8 +1,12 @@
 <template>
   <div
     class="backdrop"
-    :class="confirmAction || errorAction || loadingAction ? 'show' : null"
-    @click="loadingAction ? handleCancelAction : null"
+    :class="
+      confirmAction || errorAction || loadingAction || successAction
+        ? 'show'
+        : null
+    "
+    @click="handleCancelAction"
   >
     <slot></slot>
   </div>
@@ -14,7 +18,12 @@ import { mapState, mapMutations } from "vuex";
 export default {
   name: "Backdrop",
   computed: {
-    ...mapState(["confirmAction", "errorAction", "loadingAction"]),
+    ...mapState([
+      "confirmAction",
+      "errorAction",
+      "loadingAction",
+      "successAction",
+    ]),
   },
   methods: {
     ...mapMutations(["handleCancelAction"]),
@@ -24,14 +33,13 @@ export default {
 
 <style scoped>
 .backdrop {
+  z-index: 1;
+  pointer-events: none;
   position: absolute;
   top: 70px;
-  z-index: 1;
-  opacity: 0;
-  transform: scale(0);
   width: 100%;
-  height: calc(100% - 40px);
-  background: rgba(0, 0, 0, 0.5);
+  height: calc(100% - 70px);
+  background: rgba(0, 0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +48,7 @@ export default {
 }
 
 .backdrop.show {
-  opacity: 1;
-  transform: scale(1);
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
 }
 </style>

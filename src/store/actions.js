@@ -120,6 +120,8 @@ const actions = {
   async buyProducts({ state }) {
     state.loadingAction = true;
     state.confirmAction = false;
+    state.errorAction = null;
+    state.successAction = null;
 
     const orderId = Math.random()
       .toString(36)
@@ -160,6 +162,7 @@ const actions = {
         const newBasket = [];
         localStorage.setItem("basket", JSON.stringify(newBasket));
         state.loadingAction = false;
+        state.successAction = "Transaction successful";
       })
       .catch((err) => {
         state.errorAction = err;
