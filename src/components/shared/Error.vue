@@ -10,7 +10,7 @@
 export default {
   name: "Error",
   props: {
-    err: String,
+    err: Error,
   },
 };
 </script>

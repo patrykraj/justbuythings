@@ -5,7 +5,10 @@
       <div class="content-wrapper">
         <img :src="SiteHeader" alt="site-header" class="site-header" />
         <Loader v-if="this.loading" />
-        <Error v-else-if="this.failedToFetch" :err="this.failedToFetch" />
+        <Error
+          v-else-if="this.failedToFetch && !products.length"
+          :err="failedToFetch"
+        />
         <main v-else class="main">
           <Search />
           <Products />
@@ -45,7 +48,7 @@ export default {
       SiteHeader,
     };
   },
-  computed: mapState(["failedToFetch", "loading"]),
+  computed: mapState(["products", "failedToFetch", "loading"]),
 };
 </script>
 

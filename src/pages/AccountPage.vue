@@ -3,7 +3,8 @@
     <NavBar />
     <Modal txt="Cancel order?" @clicked="cancelOrder" />
     <div class="content-wrapper">
-      <Loader v-if="!userData" />
+      <Loader v-if="!userData && !failedToFetch" />
+      <Error v-else-if="failedToFetch" :err="failedToFetch" />
       <div v-else>
         <h2 class="page-header">
           Hello <span class="username">{{ userData.name }}</span>
@@ -45,6 +46,7 @@ import Footer from "../components/sections/Footer";
 import Loader from "../components/shared/Loader";
 import OrdersList from "../components/orders/OrdersList";
 import Modal from "../components/shared/modal/Modal";
+import Error from "../components/shared/Error.vue";
 
 import { mapState, mapActions } from "vuex";
 
@@ -56,9 +58,10 @@ export default {
     Loader,
     OrdersList,
     Modal,
+    Error,
   },
   computed: {
-    ...mapState(["userData"]),
+    ...mapState(["userData", "failedToFetch"]),
   },
   methods: {
     ...mapActions(["cancelOrder"]),

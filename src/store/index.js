@@ -14,7 +14,7 @@ const store = new Vuex.Store({
     selectedProduct: null,
     visibleProperties: {
       from: 0,
-      to: 4,
+      to: 8,
     },
     filterProperties: {
       name: "",
@@ -27,7 +27,7 @@ const store = new Vuex.Store({
     },
     filterActive: false,
     selectedPage: 0,
-    itemsPerPage: 4,
+    itemsPerPage: 8,
     sorting: null,
     failedToFetch: null,
     loading: false,
@@ -43,8 +43,7 @@ const store = new Vuex.Store({
   },
 
   getters: {
-    isAuthenticated: (state) =>
-      state.tokenId && state.userData ? true : false,
+    isAuthenticated: () => (localStorage.getItem("token") ? true : false),
   },
 
   actions,

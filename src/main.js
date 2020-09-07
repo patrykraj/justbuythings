@@ -10,6 +10,7 @@ import ProductPage from "./pages/ProductPage.vue";
 import BasketPage from "./pages/BasketPage.vue";
 import AuthenticatePage from "./pages/AuthenticatePage.vue";
 import AccountPage from "./pages/AccountPage.vue";
+import NotFound from "./pages/NotFound.vue";
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -29,6 +30,8 @@ export const router = new VueRouter({
     { path: "/auth", name: "auth", component: AuthenticatePage },
     { path: "/account", name: "my account", component: AccountPage },
     { path: "/logout", name: "logout" },
+    { path: "/404", component: NotFound },
+    { path: "*", redirect: "/404" },
   ],
 });
 
@@ -40,7 +43,7 @@ router.beforeEach((to, from, next) => {
     next({ name: "home" });
   } else if (to.name === "logout" && !store.getters.isAuthenticated)
     next({ name: "home" });
-  else if (!to.matched.length) next("/notFound");
+  else if (!to.matched.length) next("/404");
   else next();
 });
 
