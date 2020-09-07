@@ -109,7 +109,6 @@ const actions = {
       })
       .then((res) => {
         state.userData = res.data;
-        state.tokenId = token;
         state.authLoading = false;
       })
       .catch((err) => {

@@ -121,4 +121,10 @@ export default {
 .mode-switch:focus {
   outline: none;
 }
+
+@media (max-width: 600px) {
+  .auth-container {
+    min-height: calc(100vh - 290px);
+  }
+}
 </style>

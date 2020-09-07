@@ -38,6 +38,8 @@ export const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.name === "auth" && store.getters.isAuthenticated)
     next({ name: "home" });
+  else if (to.name === "my account" && !store.getters.isAuthenticated)
+    next({ name: "home" });
   else if (to.name === "logout" && store.getters.isAuthenticated) {
     store.dispatch("logout");
     next({ name: "home" });
@@ -50,11 +52,11 @@ router.beforeEach((to, from, next) => {
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
   beforeCreate() {
     this.$store.commit("initialiseStore");
     this.$store.dispatch("tryAutoLogin");
   },
+  router,
+  store,
   render: (h) => h(App),
 }).$mount("#app");

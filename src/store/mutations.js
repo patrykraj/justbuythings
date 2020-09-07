@@ -5,6 +5,12 @@ const mutations = {
 
       state.basketProducts = objects;
     }
+
+    if (localStorage.getItem("token")) {
+      const token = JSON.parse(localStorage.getItem("token"));
+
+      state.tokenId = token;
+    }
   },
 
   addToBasket({ basketProducts }, selectedProduct) {

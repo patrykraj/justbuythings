@@ -43,7 +43,7 @@ const store = new Vuex.Store({
   },
 
   getters: {
-    isAuthenticated: () => (localStorage.getItem("token") ? true : false),
+    isAuthenticated: (state) => (state.tokenId ? true : false),
   },
 
   actions,
