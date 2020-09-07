@@ -45,9 +45,13 @@ const actions = {
     state.authLoading = true;
 
     axios
-      .post("http://localhost:5000/api/user/login", user, {
-        "Content-Type": "application/json",
-      })
+      .post(
+        "https://ancient-hollows-69918.herokuapp.com/api/user/login",
+        user,
+        {
+          "Content-Type": "application/json",
+        }
+      )
       .then((res) => {
         const token = res.data;
         const decoded = jwt_decode(token);
@@ -70,9 +74,13 @@ const actions = {
     state.authLoading = true;
 
     axios
-      .post("http://localhost:5000/api/user/register", user, {
-        "Content-Type": "application/json",
-      })
+      .post(
+        "https://ancient-hollows-69918.herokuapp.com/api/user/register",
+        user,
+        {
+          "Content-Type": "application/json",
+        }
+      )
       .then((res) => {
         const token = res.data;
         const decoded = jwt_decode(token);
@@ -104,7 +112,7 @@ const actions = {
     state.authLoading = true;
 
     axios
-      .get("http://localhost:5000/api/user/getuser", {
+      .get("https://ancient-hollows-69918.herokuapp.com/api/user/getuser", {
         headers: { "auth-token": token },
       })
       .then((res) => {
@@ -149,7 +157,7 @@ const actions = {
     });
 
     axios
-      .patch("http://localhost:5000/api/orders/buy", {
+      .patch("https://ancient-hollows-69918.herokuapp.com/api/orders/buy", {
         email: state.userData.email,
         products: [...products],
         date: new Date(),
@@ -180,7 +188,10 @@ const actions = {
     };
 
     axios
-      .patch("http://localhost:5000/api/orders/cancel", data)
+      .patch(
+        "https://ancient-hollows-69918.herokuapp.com/api/orders/cancel",
+        data
+      )
       .then((res) => {
         state.userData.transactions = res.data;
         state.loadingAction = false;
