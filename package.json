@@ -6,8 +6,9 @@
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "dev": "node build/dev-server.js",
-    "build": "node build/build.js",
-    "start": "node server.js"
+    "build": "vue-cli-service build",
+    "start": "node server.js",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "axios": "^0.19.2",
