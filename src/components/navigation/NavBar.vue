@@ -1,10 +1,18 @@
 <template>
   <nav class="nav">
-    <router-link class="logo" to="/">
-      <Store />
-      <span class="logo-caption">Home</span>
-    </router-link>
+    <div class="wide-logo-container">
+      <router-link class="logo" to="/">
+        <Store />
+        <span class="logo-caption">Home</span>
+      </router-link>
+    </div>
     <ul class="top-bar" v-if="!isAuthenticated">
+      <li class="narrow-logo-container">
+        <router-link class="logo" to="/">
+          <Store />
+          <span class="logo-caption">Home</span>
+        </router-link>
+      </li>
       <NavItem
         v-for="link in links"
         :key="link.name"
@@ -13,6 +21,12 @@
       />
     </ul>
     <ul class="top-bar" v-if="isAuthenticated">
+      <li class="narrow-logo-container">
+        <router-link class="logo" to="/">
+          <Store />
+          <span class="logo-caption">Home</span>
+        </router-link>
+      </li>
       <NavItem
         v-for="link in authLinks"
         :key="link.name"
@@ -99,7 +113,6 @@ export default {
 }
 
 .logo {
-  background: #42b883;
   height: 50px;
   padding: 5px 20px;
   width: 80px;
@@ -127,6 +140,14 @@ export default {
   margin-right: 0;
 }
 
+.wide-logo-container {
+  display: block;
+}
+
+.narrow-logo-container {
+  display: none;
+}
+
 @media (max-width: 600px) {
   .nav {
     position: fixed;
@@ -138,32 +159,37 @@ export default {
   }
 
   .logo {
-    background: #42b883;
     height: 40px;
     width: 70px;
   }
 }
 
 @media (max-width: 450px) {
-  .logo {
-    width: 60px;
-  }
-
   .nav {
     padding: 0 5px;
   }
-}
 
-@media (max-width: 370px) {
   .top-bar {
-    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
   }
-}
 
-@media (max-width: 340px) {
-  .logo {
-    width: 20%;
+  .wide-logo-container {
+    display: none;
+  }
+
+  .narrow-logo-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: calc(20% - 5px);
     padding: 5px 0;
+    margin: 0 2px;
+  }
+
+  .logo {
+    padding: 0;
   }
 }
 </style>
