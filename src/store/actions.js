@@ -46,7 +46,9 @@ const actions = {
 
     axios
       .post("https://aqueous-sea-73955.herokuapp.com/api/user/login", user, {
-        "Content-Type": "application/json",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        },
       })
       .then((res) => {
         const token = res.data;
@@ -71,7 +73,9 @@ const actions = {
 
     axios
       .post("https://aqueous-sea-73955.herokuapp.com/api/user/register", user, {
-        "Content-Type": "application/json",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        },
       })
       .then((res) => {
         const token = res.data;
