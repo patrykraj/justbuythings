@@ -45,10 +45,8 @@ const actions = {
     state.authLoading = true;
 
     axios
-      .post("https://aqueous-sea-73955.herokuapp.com/api/user/login", user, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+      .post("api/user/login", user, {
+        "Content-Type": "application/json",
       })
       .then((res) => {
         const token = res.data;
@@ -72,10 +70,8 @@ const actions = {
     state.authLoading = true;
 
     axios
-      .post("https://aqueous-sea-73955.herokuapp.com/api/user/register", user, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+      .post("api/user/register", user, {
+        "Content-Type": "application/json",
       })
       .then((res) => {
         const token = res.data;
@@ -108,7 +104,7 @@ const actions = {
     state.authLoading = true;
 
     axios
-      .get("https://aqueous-sea-73955.herokuapp.com/api/user/getuser", {
+      .get("api/user/getuser", {
         headers: { "auth-token": token },
       })
       .then((res) => {
@@ -126,9 +122,7 @@ const actions = {
     state.errorAction = null;
     state.successAction = null;
 
-    const orderId = Math.random()
-      .toString(36)
-      .substr(2, 9);
+    const orderId = Math.random().toString(36).substr(2, 9);
 
     const products = [];
     state.basketProducts.map((product) => {
@@ -143,9 +137,7 @@ const actions = {
         id: product.id,
         date: new Date(),
         orderId,
-        renderId: Math.random()
-          .toString(36)
-          .substr(2, 9),
+        renderId: Math.random().toString(36).substr(2, 9),
         cancelled: false,
       };
 
@@ -153,7 +145,7 @@ const actions = {
     });
 
     axios
-      .patch("https://aqueous-sea-73955.herokuapp.com/api/orders/buy", {
+      .patch("api/orders/buy", {
         email: state.userData.email,
         products: [...products],
         date: new Date(),
@@ -184,7 +176,7 @@ const actions = {
     };
 
     axios
-      .patch("https://aqueous-sea-73955.herokuapp.com/api/orders/cancel", data)
+      .patch("api/orders/cancel", data)
       .then((res) => {
         state.userData.transactions = res.data;
         state.loadingAction = false;
