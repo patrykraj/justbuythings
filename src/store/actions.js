@@ -45,11 +45,15 @@ const actions = {
     state.authLoading = true;
 
     axios
-      .post("https://aqueous-sea-73955.herokuapp.com/api/user/login", user, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .post(
+        "https://cors-anywhere.herokuapp.com/https://aqueous-sea-73955.herokuapp.com/api/user/login",
+        user,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((res) => {
         const token = res.data;
         const decoded = jwt_decode(token);
@@ -72,11 +76,15 @@ const actions = {
     state.authLoading = true;
 
     axios
-      .post("https://aqueous-sea-73955.herokuapp.com/api/user/register", user, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      .post(
+        "https://cors-anywhere.herokuapp.com/https://aqueous-sea-73955.herokuapp.com/api/user/register",
+        user,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((res) => {
         const token = res.data;
         const decoded = jwt_decode(token);
