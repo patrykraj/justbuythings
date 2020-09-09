@@ -131,18 +131,6 @@
       "special": true,
       "img": "https://images.unsplash.com/photo-1575325343284-b485bff5230e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=310&q=31",
       "imgBig": "https://images.unsplash.com/photo-1575325343284-b485bff5230e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      "name": "Ad ullamco id duis",
-      "model": "TYS.trt.444",
-      "brand": "Company 1",
-      "price": 67.0,
-      "description": "Officia amet do quis occaecat sint ipsum magna sit id voluptate officia laboris. Aute qui dolore ullamco fugiat enim excepteur sit Lorem commodo elit non. Voluptate quis aliquip tempor occaecat Lorem culpa aliqua dolor labore excepteur sit pariatur.",
-      "color": "red",
-      "id": 5438348583,
-      "special": false,
-      "img": "https://images.unsplash.com/photo-1587653914557-98f6c6f9577c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=310&q=31",
-      "imgBig": "https://images.unsplash.com/photo-1587653914557-98f6c6f9577c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
     }
   ]
 }
