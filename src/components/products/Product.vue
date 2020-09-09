@@ -24,13 +24,22 @@
     </div>
     <div class="price-container">
       <Button
-        txt="Add to compare"
+        txt="Add to basket"
         :special="product.special"
-        :disabled="checkInCompared(product)"
-        @clicked="addToCompared(product)"
+        :disabled="checkInBasket(product)"
+        @clicked="addToBasket(product)"
       />
-      <h4>${{ product.price.toFixed(2) }} net</h4>
-      <p>${{ (product.price * 0.23 + product.price).toFixed(2) }} gross</p>
+      <button
+        class="compare-btn"
+        :disabled="checkInCompared(product)"
+        @click="addToCompared(product)"
+      >
+        Compare product
+      </button>
+      <h4 class="price">${{ product.price.toFixed(2) }} net</h4>
+      <p class="price">
+        ${{ (product.price * 0.23 + product.price).toFixed(2) }} gross
+      </p>
     </div>
   </li>
 </template>
@@ -54,7 +63,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["addToCompared"]),
+    ...mapMutations(["addToCompared", "addToBasket"]),
     checkInCompared(productToCheck) {
       let inCompared = false;
 
@@ -64,9 +73,18 @@ export default {
 
       return inCompared;
     },
+    checkInBasket(productToCheck) {
+      let inBasket = false;
+
+      this.basketProducts.map((product) => {
+        if (productToCheck.id === product.id) inBasket = true;
+      });
+
+      return inBasket;
+    },
   },
   computed: {
-    ...mapState(["comparedProducts"]),
+    ...mapState(["comparedProducts", "basketProducts"]),
   },
 };
 </script>
@@ -155,9 +173,43 @@ div.price-container {
   min-width: 160px;
 }
 
+.compare-btn {
+  display: block;
+  margin: 8px 0 8px 5px;
+  border: none;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  color: #2c3e50;
+  font-weight: bold;
+  padding: 5px 0;
+  transition: 0.2s all;
+}
+
+.compare-btn:hover {
+  border-bottom: 1px solid #2c3e50;
+}
+
+.compare-btn:disabled {
+  color: rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+.compare-btn:disabled:hover {
+  border-bottom: 1px solid transparent;
+}
+
+.compare-btn:focus {
+  outline: none;
+}
+
+.price {
+  margin: 5px 0 5px 5px;
+}
+
 @media (max-width: 600px) {
   li.product-listed {
-    min-width: 50%;
+    max-width: 50%;
     flex-direction: column;
     flex: 1 0 0;
     align-items: center;
