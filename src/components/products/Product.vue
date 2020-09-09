@@ -210,12 +210,17 @@ div.price-container {
 @media (max-width: 600px) {
   li.product-listed {
     max-width: 50%;
+    min-width: 50%;
     flex-direction: column;
     flex: 1 0 0;
     align-items: center;
     text-align: center;
     border: none;
     padding: 2rem 0;
+  }
+
+  .compare-btn {
+    margin: 8px auto;
   }
 
   h3.product-name {
@@ -226,7 +231,7 @@ div.price-container {
 @media (max-width: 360px) {
   li.product-listed {
     max-width: 60%;
-    min-width: 250px;
+    min-width: 200px;
     padding-top: 0;
   }
 
